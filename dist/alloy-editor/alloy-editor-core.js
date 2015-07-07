@@ -936,6 +936,54 @@ CKEDITOR.disableAutoInline = true;
 'use strict';
 
 (function () {
+				'use strict';
+
+				if (CKEDITOR.plugins.get('uibridge')) {
+								return;
+				}
+
+				CKEDITOR.plugins.add('uibridge', {
+								init: function init(editor) {
+												editor.ui.addButton = function (buttonName, buttonDefinition) {
+																if (!AlloyEditor.Buttons[buttonDefinition.command]) {
+																				var button = React.createClass({
+																								displayName: buttonName,
+
+																								propTypes: {
+																												editor: React.PropTypes.object.isRequired
+																								},
+
+																								statics: {
+																												key: buttonDefinition.command
+																								},
+
+																								render: function render() {
+																												var cssClass = 'ae-button';
+
+																												return React.createElement('button', {
+																																className: cssClass,
+																																'data-type': 'button-marquee',
+																																onClick: this._handleClick,
+																																tabIndex: this.props.tabIndex
+																												}, React.createElement('span', {
+																																className: 'ae-icon-separator'
+																												}));
+																								},
+
+																								_handleClick: function _handleClick() {
+																												this.props.editor.get('nativeEditor').execCommand(buttonDefinition.command);
+																								}
+																				});
+
+																				AlloyEditor.Buttons[buttonDefinition.command] = button;
+																}
+												};
+								}
+				});
+})();
+'use strict';
+
+(function () {
     'use strict';
 
     if (CKEDITOR.plugins.get('uicore')) {
@@ -4258,7 +4306,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
              */
             extraPlugins: {
                 validator: AlloyEditor.Lang.isString,
-                value: 'uicore,selectionregion,dragresize,addimages,placeholder,tabletools,tableresize,autolink',
+                value: 'uibridge,codesnippet,uicore,selectionregion,dragresize,addimages,placeholder,tabletools,tableresize,autolink',
                 writeOnce: true
             },
 
@@ -4333,7 +4381,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
                 validator: '_validateToolbars',
                 value: {
                     add: {
-                        buttons: ['image', 'camera', 'hline', 'table'],
+                        buttons: ['image', 'camera', 'hline', 'table', 'codeSnippet'],
                         tabIndex: 2
                     },
                     styles: {
@@ -5422,7 +5470,7 @@ CKEDITOR.tools.buildTableMap = function (table) {
             domElement.removeClass('alloy-editor-invisible');
 
             this._animate(function () {
-                domElement.addClass('ae-toolbar-transition alloy-editor-visible');
+                domElement.addClass('ae-toolbar-transition', 'alloy-editor-visible');
                 domElement.setStyles({
                     left: endPoint[0],
                     top: endPoint[1],

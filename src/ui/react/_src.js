@@ -4,6 +4,7 @@ module.exports = [
     'core/selection-region.js',
     'core/table.js',
     'core/tools.js',
+    'core/uibridge.js',
     'core/uicore.js',
     'plugins/*.js',
     'ui/react/src/adapter/main.js',

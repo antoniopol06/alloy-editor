@@ -229,7 +229,7 @@
              */
             extraPlugins: {
                 validator: AlloyEditor.Lang.isString,
-                value: 'uicore,selectionregion,dragresize,addimages,placeholder,tabletools,tableresize,autolink',
+                value: 'uibridge,codesnippet,uicore,selectionregion,dragresize,addimages,placeholder,tabletools,tableresize,autolink',
                 writeOnce: true
             },
 
@@ -304,7 +304,7 @@
                 validator: '_validateToolbars',
                 value: {
                     add: {
-                        buttons: ['image', 'camera', 'hline', 'table'],
+                        buttons: ['image', 'camera', 'hline', 'table', 'codeSnippet'],
                         tabIndex: 2
                     },
                     styles: {
