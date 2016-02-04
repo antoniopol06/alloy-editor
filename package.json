@@ -18,6 +18,7 @@
     "gulp-cssnano": "^2.0.0",
     "gulp-empty": "^0.1.1",
     "gulp-iconfont": "^5.0.1",
+    "gulp-maven-deploy": "^0.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.3",
     "gulp-sass": "~2.1.1",
