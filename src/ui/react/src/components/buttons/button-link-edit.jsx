@@ -8,10 +8,13 @@
      * The ButtonLinkEdit class provides functionality for creating and editing a link in a document.
      * Provides UI for creating, editing and removing a link.
      *
+     * @uses WidgetDropdown
+     * @uses ButtonCfgProps
+     *
      * @class ButtonLinkEdit
      */
     var ButtonLinkEdit = React.createClass({
-        mixins: [AlloyEditor.WidgetDropdown],
+        mixins: [AlloyEditor.WidgetDropdown, AlloyEditor.ButtonCfgProps],
 
         // Allows validating props being passed to the component.
         propTypes: {
@@ -48,7 +51,21 @@
              *
              * @property {Boolean} showTargetSelector
              */
-            showTargetSelector: React.PropTypes.bool
+            showTargetSelector: React.PropTypes.bool,
+
+            /**
+             * List of items to be rendered as possible values for the link or a function, which is
+             * supposed to retrieve the data. The function should return a Promise.
+             * The returned items must be objects with at least two properties:
+             * - title
+             * - url
+             *
+             * @property {Function|Array} data
+             */
+            data: React.PropTypes.oneOfType([
+                React.PropTypes.func,
+                React.PropTypes.arrayOf(React.PropTypes.object)
+            ])
 
         },
 
@@ -76,11 +93,7 @@
             if (this.props.renderExclusive || this.props.manualSelection) {
                 // We need to wait for the next rendering cycle before focusing to avoid undesired
                 // scrolls on the page
-                if (window.requestAnimationFrame) {
-                    window.requestAnimationFrame(this._focusLinkInput);
-                } else {
-                    setTimeout(this._focusLinkInput, 0);
-                }
+                this._focusLinkInput();
             }
         },
 
@@ -104,7 +117,8 @@
             return {
                 defaultLinkTarget: '',
                 showTargetSelector: true,
-                appendProtocol: true
+                appendProtocol: true,
+                autocompleteUrl: ''
             };
         },
 
@@ -154,7 +168,35 @@
 
                 targetSelectorProps = this.mergeDropdownProps(targetSelectorProps, AlloyEditor.ButtonLinkTargetEdit.key);
 
-                targetSelector = <AlloyEditor.ButtonLinkTargetEdit {...targetSelectorProps} />;
+                var props = this.mergeButtonCfgProps(targetSelectorProps);
+
+                targetSelector = <AlloyEditor.ButtonLinkTargetEdit {...props} />;
+            }
+
+            var autocompleteDropdown;
+
+            if (this.props.data) {
+                var dataFn = this.props.data;
+
+                if (!AlloyEditor.Lang.isFunction(dataFn)) {
+                    var items = this.props.data;
+
+                    dataFn = function(term) {
+                        return items;
+                    };
+                }
+
+                var autocompleteDropdownProps = {
+                    data: dataFn,
+                    editor: this.props.editor,
+                    handleLinkAutocompleteClick: this._handleLinkAutocompleteClick,
+                    onDismiss: this.props.toggleDropdown,
+                    term: this.state.linkHref
+                };
+
+                autocompleteDropdownProps = this.mergeDropdownProps(autocompleteDropdownProps, AlloyEditor.ButtonLinkAutocompleteList.key);
+
+                autocompleteDropdown = <AlloyEditor.ButtonLinkAutocompleteList {...autocompleteDropdownProps} />;
             }
 
             return (
@@ -164,7 +206,10 @@
                     </button>
                     <div className="ae-container-input xxl">
                         {targetSelector}
-                        <input className="ae-input" onChange={this._handleLinkHrefChange} onKeyDown={this._handleKeyDown} placeholder={AlloyEditor.Strings.editLink} ref="linkInput" type="text" value={this.state.linkHref}></input>
+                        <div className="ae-container-input xxl">
+                            <input className="ae-input" onChange={this._handleLinkHrefChange} onKeyDown={this._handleKeyDown} placeholder={AlloyEditor.Strings.editLink} ref="linkInput" type="text" value={this.state.linkHref}></input>
+                            {autocompleteDropdown}
+                        </div>
                         <button aria-label={AlloyEditor.Strings.clearInput} className="ae-button ae-icon-remove" onClick={this._clearLink} style={clearLinkStyle} title={AlloyEditor.Strings.clear}></button>
                     </div>
                     <button aria-label={AlloyEditor.Strings.confirm} className="ae-button" disabled={!this._isValidState()} onClick={this._updateLink} title={AlloyEditor.Strings.confirm}>
@@ -195,7 +240,18 @@
          * @method _focusLinkInput
          */
         _focusLinkInput: function() {
-            ReactDOM.findDOMNode(this.refs.linkInput).focus();
+            var instance = this;
+
+            var focusLinkEl = function() {
+                ReactDOM.findDOMNode(instance.refs.linkInput).focus();
+            };
+
+            if (window.requestAnimationFrame) {
+                window.requestAnimationFrame(focusLinkEl);
+            } else {
+                setTimeout(focusLinkEl, 0);
+            }
+
         },
 
         /**
@@ -259,6 +315,8 @@
             this.setState({
                 linkHref: event.target.value
             });
+
+            this._focusLinkInput();
         },
 
         /**
@@ -273,6 +331,24 @@
                 itemDropdown: null,
                 linkTarget: event.target.getAttribute('data-value')
             });
+
+            this._focusLinkInput();
+        },
+
+        /**
+         * Updates the component state when an autocomplete link result is selected by user interaction.
+         *
+         * @protected
+         * @method _handleLinkAutocompleteClick
+         * @param {SyntheticEvent} event The click event.
+         */
+        _handleLinkAutocompleteClick: function(event) {
+            this.setState({
+                itemDropdown: null,
+                linkHref: event.target.getAttribute('data-value')
+            });
+
+            this._focusLinkInput();
         },
 
         /**
