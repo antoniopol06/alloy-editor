@@ -1440,10 +1440,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             var uiTasksTimeout = editor.config.uicore ? editor.config.uicore.timeout : 50;
 
-            var handleAria = CKEDITOR.tools.debounce(function (event) {
-                ariaElement.innerHTML = ariaState.join('. ');
-            }, uiTasksTimeout);
-
             var handleUI = CKEDITOR.tools.debounce(function (event) {
                 ariaState = [];
 
@@ -1459,9 +1455,31 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 }
             }, uiTasksTimeout);
 
+            var handleAria = CKEDITOR.tools.debounce(function (event) {
+                ariaElement.innerHTML = ariaState.join('. ');
+            }, uiTasksTimeout);
+
+            var handleMouseLeave = CKEDITOR.tools.debounce(function (event) {
+                var aeUINodes = document.querySelectorAll('.ae-ui');
+
+                var found;
+
+                for (var i = 0; i < aeUINodes.length; i++) {
+                    if (aeUINodes[i].contains(event.data.$.relatedTarget)) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    handleUI(event);
+                }
+            }, uiTasksTimeout);
+
             var handleBlur = function handleBlur(event) {
                 event.removeListener('blur', handleBlur);
                 event.removeListener('keyup', handleUI);
+                event.removeListener('mouseleave', handleMouseLeave);
                 event.removeListener('mouseup', handleUI);
 
                 handleUI(event);
@@ -1486,6 +1504,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     editable.attachListener(editable, 'blur', handleBlur);
                     editable.attachListener(editable, 'keyup', handleUI);
                     editable.attachListener(editable, 'mouseup', handleUI);
+                    editable.attachListener(editable, 'mouseleave', handleMouseLeave);
 
                     handleUI(event);
                 });
@@ -9103,9 +9122,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         },
 
         /**
-         * On input change, reads the chosen file and creates an img element with src the image data as Data URI.
-         * Then, fires an {{#crossLink "ButtonImage/imageAdd:event"}}{{/crossLink}} via CKEditor's
-         * message system. The passed params will be:
+         * On input change, reads the chosen file and fires an event `beforeImageAdd` with the image which will be added
+         * to the content. The image file will be passed in the `imageFiles` property.
+         * If any of the listeners returns `false` or cancels the event, the image won't be added to the content.
+         * Otherwise, an event `imageAdd` will be fired with the inserted element into the editable area.
+         * The passed params will be:
          * - `el` - the created img element
          * - `file` - the original image file from the input element
          *
@@ -9127,18 +9148,24 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             reader.onload = function (event) {
                 var editor = this.props.editor.get('nativeEditor');
 
-                var el = CKEDITOR.dom.element.createFromHtml('<img src="' + event.target.result + '">');
+                var result = editor.fire('beforeImageAdd', {
+                    imageFiles: file
+                });
 
-                editor.insertElement(el);
+                if (!!result) {
+                    var el = CKEDITOR.dom.element.createFromHtml('<img src="' + event.target.result + '">');
 
-                editor.fire('actionPerformed', this);
+                    editor.insertElement(el);
 
-                var imageData = {
-                    el: el,
-                    file: file
-                };
+                    editor.fire('actionPerformed', this);
 
-                editor.fire('imageAdd', imageData);
+                    var imageData = {
+                        el: el,
+                        file: file
+                    };
+
+                    editor.fire('imageAdd', imageData);
+                }
             }.bind(this);
 
             reader.readAsDataURL(file);
@@ -9147,10 +9174,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
 
         /**
-         * Fired when an image file is added as an element to the editor.
+         * Fired before adding images to the editor.
+         *
+         * @event beforeImageAdd
+         * @param {Array} imageFiles Array of image files
+         */
+
+        /**
+         * Fired when an image is being added to the editor successfully.
          *
          * @event imageAdd
-         * @param {CKEDITOR.dom.element} el The created image with src as Data URI.
+         * @param {CKEDITOR.dom.element} el The created image with src as Data URI
+         * @param {File} file The image file
          */
     });
 
