@@ -182,6 +182,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         regexBasePath: /(^|.*[\\\/])(?:alloy-editor[^/]+|alloy-editor)\.js(?:\?.*|;.*)?$/i,
 
         /**
+         * And object, containing all currently registered accessibility buttons in AlloyEditor.
+         *
+         * @property Buttons
+         * @type {Object}
+         * @static
+         */
+        AccessibilityButtons: {},
+
+        /**
          * And object, containing all currently registered buttons in AlloyEditor.
          *
          * @property Buttons
@@ -5615,11 +5624,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         test: AlloyEditor.SelectionTest.embed
     }, {
         name: 'link',
-        buttons: ['linkEdit'],
+        buttons: ['linkEdit', 'accessibility'],
         test: AlloyEditor.SelectionTest.link
     }, {
         name: 'image',
-        buttons: ['imageLeft', 'imageCenter', 'imageRight'],
+        buttons: ['imageLeft', 'imageCenter', 'imageRight', 'accessibility'],
         setPosition: AlloyEditor.SelectionSetPosition.image,
         test: AlloyEditor.SelectionTest.image
     }, {
@@ -5677,9 +5686,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             editor.config.toolbars = this.get('toolbars');
 
             editor.config.removePlugins = this.get('removePlugins');
-            editor.config.extraPlugins = this.get('extraPlugins');
+            editor.config.extraPlugins = this.get('extraPlugins') + ',ae_buttonbridge,quail,dialog';
             editor.config.placeholderClass = this.get('placeholderClass');
+            editor.config.quail = {
+                path: '../lib/quail',
+                tests: ['imgHasAlt', 'aMustHaveTitle', 'aMustContainText']
+            };
 
+            editor.configformat_tags = 'p;h1;h2;h3;pre';
+            editor.config.removeDialogTabs = '';
             editor.config.pasteFromWordRemoveStyles = false;
             editor.config.pasteFromWordRemoveFontStyles = false;
 
@@ -5695,6 +5710,35 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 var editable = editor.editable();
 
                 editable.addClass('ae-editable');
+
+                editable.editor.on('accessibility', function () {
+                    editor.config.accessibility = !editor.config.accessibility;
+                    if (editor.config.accessibility) {
+                        // AXE-CORE
+                        // axe.a11yCheck(editor.element.$, { runOnly: { type: 'rule', values: ['image-alt'] } }, function (results) {
+                        //     console.log(results);
+                        //     if (results.violations) {
+                        //         results.violations.forEach(function (violation, index) {
+
+                        //             if (violation.id === 'image-alt') {
+                        //                 var img = document.querySelector(violation.nodes[0].target[0]);
+                        //                 img.className += " ae-accessibility-visible";
+                        //                 img.setAttribute('accessibility-violation', 'AltImage ErrorImage');
+                        //             }
+                        //         })
+                        //     }
+                        // });
+                        // QUAIL
+                        editor.commands.quailCheckContent.exec();
+                    } else {
+                        var elements = document.getElementsByClassName('ae-accessibility-visible');
+                        if (elements.length > 0) {
+                            elements.forEach(function (element, index) {
+                                element.className = element.className.replace('ae-accessibility-visible', '');
+                            });
+                        }
+                    }
+                });
 
                 editable.editor.on('readOnly', this._onReadOnlyChangeFn.bind(this));
             }.bind(this));
@@ -6055,7 +6099,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 validator: '_validateToolbars',
                 value: {
                     add: {
-                        buttons: ['image', 'embed', 'camera', 'hline', 'table'],
+                        buttons: ['image', 'embed', 'camera', 'hline', 'table', 'Quail'],
                         tabIndex: 2
                     },
                     styles: {
@@ -6488,6 +6532,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             var buttonProps = {};
 
             var nativeEditor = this.props.editor.get('nativeEditor');
+
             var buttonCfg = nativeEditor.config.buttonCfg || {};
 
             var toolbarButtons = this.filterExclusive(buttons.filter(function (button) {
@@ -6500,7 +6545,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     buttonProps[AlloyEditor.Buttons[button.name].key] = CKEDITOR.tools.merge(buttonCfg[button], button.cfg);
                     button = AlloyEditor.Buttons[button.name];
                 }
-
                 return button;
             })).map(function (button) {
                 var props = this.mergeExclusiveProps({
@@ -6521,6 +6565,27 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
                 return React.createElement(button, props);
             }, this);
+
+            if (nativeEditor.config.accessibility) {
+                var key = AlloyEditor.ButtonAccessible.key;
+
+                var props = this.mergeExclusiveProps({
+                    editor: this.props.editor,
+                    key: key,
+                    tabKey: key,
+                    tabIndex: this.props.trigger && this.props.trigger.props.tabKey === key ? 0 : -1,
+                    trigger: this.props.trigger
+                }, key);
+
+                props = this.mergeDropdownProps(props, key);
+
+                if (additionalProps) {
+                    props = CKEDITOR.tools.merge(props, additionalProps);
+                }
+
+                props = CKEDITOR.tools.merge(props, key);
+                toolbarButtons.push(React.createElement(AlloyEditor.ButtonAccessible, props));
+            }
 
             return toolbarButtons;
         }
@@ -7499,6 +7564,378 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
 
     AlloyEditor.WidgetPosition = WidgetPosition;
+})();
+'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+(function () {
+    'use strict';
+
+    /**
+     * The ButtonAccessible class provides functionality for creating and editing a link in a document. ButtonAccessible
+     * renders in two different modes:
+     *
+     * - Normal: Just a button that allows to switch to the edition mode
+     * - Exclusive: The ButtonLinkEdit UI with all the link edition controls.
+     *
+     * @uses ButtonKeystroke
+     * @uses ButtonStateClasses
+     * @uses ButtonCfgProps
+     *
+     * @class ButtonAccessible
+     */
+
+    var ButtonAccessible = React.createClass({
+        displayName: 'ButtonAccessible',
+
+        mixins: [AlloyEditor.ButtonKeystroke, AlloyEditor.ButtonStateClasses, AlloyEditor.ButtonCfgProps],
+
+        // Allows validating props being passed to the component.
+        propTypes: {
+            /**
+             * The editor instance where the component is being used.
+             *
+             * @property {Object} editor
+             */
+            editor: React.PropTypes.object.isRequired,
+
+            /**
+             * The label that should be used for accessibility purposes.
+             *
+             * @property {String} label
+             */
+            label: React.PropTypes.string,
+
+            /**
+             * The tabIndex of the button in its toolbar current state. A value other than -1
+             * means that the button has focus and is the active element.
+             *
+             * @property {Number} tabIndex
+             */
+            tabIndex: React.PropTypes.number
+        },
+
+        // Lifecycle. Provides static properties to the widget.
+        statics: {
+            /**
+             * The name which will be used as an alias of the button in the configuration.
+             *
+             * @static
+             * @property {String} key
+             * @default link
+             */
+            key: 'accessibility'
+        },
+
+        getInitialState: function getInitialState() {
+            return {
+                step: 0
+            };
+        },
+
+
+        /**
+         * Lifecycle. Returns the default values of the properties used in the widget.
+         *
+         * @method getDefaultProps
+         * @return {Object} The default properties.
+         */
+        getDefaultProps: function getDefaultProps() {
+            return {
+                keystroke: {
+                    fn: '_requestExclusive',
+                    keys: CKEDITOR.CTRL + 76 /*L*/
+                }
+            };
+        },
+
+        /**
+         * Checks if the current selection is contained within a link.
+         *
+         * @method isActive
+         * @return {Boolean} True if the selection is inside a link, false otherwise.
+         */
+        isActive: function isActive() {
+            return new CKEDITOR.Link(this.props.editor.get('nativeEditor')).getFromSelection() !== null;
+        },
+
+        /**
+         * Lifecycle. Renders the UI of the button.
+         *
+         * @method render
+         * @return {Object} The content which should be rendered.
+         */
+        render: function render() {
+            var cssClass = 'ae-button ' + this.getStateClasses();
+
+            var element = this.props.editor.get('nativeEditor').getSelection().getSelectedElement() || this.props.editor.get('nativeEditor').getSelection().getRanges()[0].startContainer.$.parentNode;
+
+            var cssStyle;
+
+            var buttons;
+
+            var accessibilityWarnings;
+
+            if (element && element.getAttribute) {
+                accessibilityWarnings = element.getAttribute('accessibility-warnings');
+            }
+
+            if (accessibilityWarnings === '' || !accessibilityWarnings) {
+                cssStyle = {
+                    color: 'green'
+                };
+            } else {
+                cssStyle = {
+                    color: 'red'
+                };
+
+                buttons = accessibilityWarnings.split(' ');
+            }
+
+            if (this.props.renderExclusive && buttons[this.state.step]) {
+                var props = this.mergeButtonCfgProps();
+
+                var ButtonAccessibility = AlloyEditor['Button' + buttons[this.state.step]];
+
+                var nextFn = this._goToStep.bind(this, this.state.step + 1);
+
+                var prevFn = this._goToStep.bind(this, this.state.step - 1);
+
+                return React.createElement(ButtonAccessibility, _extends({}, props, { step: this.state.step, nextStep: nextFn, prevStep: prevFn, totalSteps: buttons.length }));
+            } else {
+                return React.createElement(
+                    'button',
+                    { 'aria-label': AlloyEditor.Strings.link, style: cssStyle, className: cssClass, 'data-type': 'button-link', onClick: this._requestExclusive, tabIndex: this.props.tabIndex, title: AlloyEditor.Strings.link },
+                    React.createElement('span', { className: 'ae-icon-link' })
+                );
+            }
+        },
+
+        /**
+         * Requests the link button to be rendered in exclusive mode to allow the creation of a link.
+         *
+         * @protected
+         * @method _requestExclusive
+         */
+        _requestExclusive: function _requestExclusive() {
+            this.props.requestExclusive(ButtonAccessible.key);
+        },
+
+        _goToStep: function _goToStep(step) {
+            this.setState({
+                step: step
+            });
+        }
+    });
+
+    AlloyEditor.Buttons[ButtonAccessible.key] = AlloyEditor.ButtonAccessible = ButtonAccessible;
+})();
+'use strict';
+
+/* global React, AlloyEditor */
+
+(function () {
+    'use strict';
+
+    var React = AlloyEditor.React;
+
+    var ButtonimgHasAlt = React.createClass({
+        mixins: [AlloyEditor.WidgetFocusManager, AlloyEditor.ButtonCfgProps],
+
+        displayName: 'ButtonimgHasAlt',
+
+        propTypes: {
+            editor: React.PropTypes.object.isRequired
+        },
+
+        statics: {
+            key: 'imgHasAlt'
+        },
+
+        /**
+         * Lifecycle. Invoked once, only on the client, immediately after the initial rendering occurs.
+         *
+         * Focuses on the link input to immediately allow editing. This should only happen if the component
+         * is rendered in exclusive mode to prevent aggressive focus stealing.
+         *
+         * @method componentDidMount
+         */
+        componentDidMount: function componentDidMount() {
+            if (this.props.renderExclusive || this.props.manualSelection) {
+                // We need to wait for the next rendering cycle before focusing to avoid undesired
+                // scrolls on the page
+                this._focusAltInput();
+            }
+        },
+
+        /**
+         * Lifecycle. Returns the default values of the properties used in the widget.
+         *
+         * @method getDefaultProps
+         * @return {Object} The default properties.
+         */
+        getDefaultProps: function getDefaultProps() {
+            return {
+                circular: true,
+                descendants: '.ae-toolbar-element',
+                keys: {
+                    dismiss: [27],
+                    dismissNext: [39],
+                    dismissPrev: [37],
+                    next: [40],
+                    prev: [38]
+                },
+                violationAccessibility: 'imgHasAlt'
+            };
+        },
+
+        /**
+         * Lifecycle. Invoked once before the component is mounted.
+         * The return value will be used as the initial value of this.state.
+         *
+         * @method getInitialState
+         */
+        getInitialState: function getInitialState() {
+            var image = this.props.editor.get('nativeEditor').getSelection().getSelectedElement();
+
+            return {
+                altImage: image.getAttribute('alt'),
+                element: image
+            };
+        },
+
+        /**
+         * Lifecycle. Renders UI to attach alt to an image through input
+         *
+         * @method render
+         * @return {Object} The content which should be rendered.
+         */
+        render: function render() {
+            var editor = this.props.editor.get('nativeEditor');
+
+            var renderComponent;
+
+            var nextButton = this.props.step + 1 < this.props.totalSteps ? React.createElement(
+                'button',
+                { className: 'ae-button', onClick: this.props.nextStep },
+                'next'
+            ) : undefined;
+
+            var previousButton = this.props.step > 0 ? React.createElement(
+                'button',
+                { className: 'ae-button', onClick: this.props.prevStep },
+                'prev'
+            ) : undefined;
+
+            if (this.state.element.getAttribute('accessibility-warnings').indexOf('imgHasAlt') !== -1) {
+                renderComponent = React.createElement(
+                    'div',
+                    { className: 'ae-container-edit-link' },
+                    React.createElement(
+                        'div',
+                        { className: 'ae-container-input xxl' },
+                        React.createElement('input', { ariaLabel: 'Alt', className: 'ae-input', onChange: this._handleAltChange, onKeyDown: this._handleKeyDown, placeholder: 'Alt', ref: 'refAltInput', title: 'Alt', value: this.state.altImage })
+                    ),
+                    React.createElement(
+                        'button',
+                        { className: 'ae-button', onClick: this._updateAltImage },
+                        React.createElement('span', { className: 'ae-icon-ok' })
+                    ),
+                    React.createElement(
+                        'span',
+                        null,
+                        this.props.step + 1,
+                        ' de ',
+                        this.props.totalSteps
+                    ),
+                    previousButton,
+                    nextButton
+                );
+            }
+
+            return renderComponent;
+        },
+
+        /**
+         * Focuses the user cursor on the widget's input.
+         *
+         * @protected
+         * @method _focusAltInput
+         */
+        _focusAltInput: function _focusAltInput() {
+            var instance = this;
+
+            var focusLinkEl = function focusLinkEl() {
+                AlloyEditor.ReactDOM.findDOMNode(instance.refs.refAltInput).focus();
+            };
+
+            if (window.requestAnimationFrame) {
+                window.requestAnimationFrame(focusLinkEl);
+            } else {
+                setTimeout(focusLinkEl, 0);
+            }
+        },
+
+        /**
+         * Event attached to alt input that fires when its value is changed
+         *
+         * @protected
+         * @param {MouseEvent} event
+         */
+        _handleAltChange: function _handleAltChange(event) {
+            this.setState({ altImage: event.target.value });
+
+            this._focusAltInput();
+        },
+
+        /**
+         * Event attached to al tinput that fires when key is down
+         * This method check that enter key is pushed to update the component´s state
+         *
+         * @protected
+         * @param {MouseEvent} event
+         */
+        _handleKeyDown: function _handleKeyDown(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                this._updateAltImage();
+            }
+        },
+
+        /**
+         * Method called by clicking ok button or pushing key enter to update altImage state and to update alt property from the image that is selected
+         * This method calls cancelExclusive to show the previous toolbar before enter to edit alt property
+         *
+         * @protected
+         */
+        _updateAltImage: function _updateAltImage() {
+            var editor = this.props.editor.get('nativeEditor');
+
+            var newValue = this.refs.refAltInput.value;
+
+            this.setState({
+                altImage: newValue
+            });
+
+            this.state.element.setAttribute('alt', newValue);
+
+            var elementSelected = this.props.elementSelected;
+
+            if (this.state.element.getAttribute('alt')) {
+                var violation = this.state.element.getAttribute('accessibility-warnings');
+
+                violation = violation.replace(this.props.violationAccessibility, '');
+                this.state.element.setAttribute('accessibility-warnings', violation.trim());
+            }
+
+            editor.fire('actionPerformed', this);
+
+            this.props.cancelExclusive();
+        }
+    });
+
+    AlloyEditor.AccessibilityButtons[ButtonimgHasAlt.key] = AlloyEditor.ButtonimgHasAlt = ButtonimgHasAlt;
 })();
 'use strict';
 
@@ -12873,6 +13310,212 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     });
 
     AlloyEditor.Buttons[ButtonTargetList.key] = AlloyEditor.ButtonTargetList = ButtonTargetList;
+})();
+'use strict';
+
+/* global React, AlloyEditor */
+
+(function () {
+    'use strict';
+
+    var React = AlloyEditor.React;
+
+    var ButtonaMustHaveTitle = React.createClass({
+        mixins: [AlloyEditor.WidgetFocusManager, AlloyEditor.ButtonCfgProps],
+
+        displayName: 'ButtonaMustHaveTitle',
+
+        propTypes: {
+            editor: React.PropTypes.object.isRequired
+        },
+
+        statics: {
+            key: 'aMustHaveTitle'
+        },
+
+        /**
+         * Lifecycle. Invoked once, only on the client, immediately after the initial rendering occurs.
+         *
+         * Focuses on the link input to immediately allow editing. This should only happen if the component
+         * is rendered in exclusive mode to prevent aggressive focus stealing.
+         *
+         * @method componentDidMount
+         */
+        componentDidMount: function componentDidMount() {
+            if (this.props.renderExclusive || this.props.manualSelection) {
+                // We need to wait for the next rendering cycle before focusing to avoid undesired
+                // scrolls on the page
+                this._focusAltInput();
+            }
+        },
+
+        /**
+         * Lifecycle. Returns the default values of the properties used in the widget.
+         *
+         * @method getDefaultProps
+         * @return {Object} The default properties.
+         */
+        getDefaultProps: function getDefaultProps() {
+            return {
+                circular: true,
+                descendants: '.ae-toolbar-element',
+                keys: {
+                    dismiss: [27],
+                    dismissNext: [39],
+                    dismissPrev: [37],
+                    next: [40],
+                    prev: [38]
+                },
+                violationAccessibility: 'aMustHaveTitle'
+            };
+        },
+
+        /**
+         * Lifecycle. Invoked once before the component is mounted.
+         * The return value will be used as the initial value of this.state.
+         *
+         * @method getInitialState
+         */
+        getInitialState: function getInitialState() {
+            var link = this.props.editor.get('nativeEditor').getSelection().getRanges()[0].startContainer.$.parentNode;
+
+            return {
+                titleLink: link.getAttribute('title'),
+                element: link
+            };
+        },
+
+        /**
+         * Lifecycle. Renders UI to attach title to an image through input
+         *
+         * @method render
+         * @return {Object} The content which should be rendered.
+         */
+        render: function render() {
+            var editor = this.props.editor.get('nativeEditor');
+
+            var renderComponent;
+
+            var nextButton = this.props.step + 1 < this.props.totalSteps ? React.createElement(
+                'button',
+                { className: 'ae-button', onClick: this.props.nextStep },
+                'next'
+            ) : undefined;
+
+            var previousButton = this.props.step > 0 ? React.createElement(
+                'button',
+                { className: 'ae-button', onClick: this.props.prevStep },
+                'prev'
+            ) : undefined;
+
+            if (this.state.element.getAttribute('accessibility-warnings').indexOf('aMustHaveTitle') !== -1) {
+                renderComponent = React.createElement(
+                    'div',
+                    { className: 'ae-container-edit-link' },
+                    React.createElement(
+                        'div',
+                        { className: 'ae-container-input xxl' },
+                        React.createElement('input', { ariaLabel: 'title', className: 'ae-input', onChange: this._handleTitleChange, onKeyDown: this._handleKeyDown, placeholder: 'title', ref: 'refTitleLink', title: 'title', value: this.state.titleLink })
+                    ),
+                    React.createElement(
+                        'button',
+                        { className: 'ae-button', onClick: this._updateTitleA },
+                        React.createElement('span', { className: 'ae-icon-ok' })
+                    ),
+                    React.createElement(
+                        'span',
+                        null,
+                        this.props.step + 1,
+                        ' de ',
+                        this.props.totalSteps
+                    ),
+                    previousButton,
+                    nextButton
+                );
+            }
+
+            return renderComponent;
+        },
+
+        /**
+         * Focuses the user cursor on the widget's input.
+         *
+         * @protected
+         * @method _focusAltInput
+         */
+        _focusAltInput: function _focusAltInput() {
+            var instance = this;
+
+            var focusLinkEl = function focusLinkEl() {
+                AlloyEditor.ReactDOM.findDOMNode(instance.refs.refTitleLink).focus();
+            };
+
+            if (window.requestAnimationFrame) {
+                window.requestAnimationFrame(focusLinkEl);
+            } else {
+                setTimeout(focusLinkEl, 0);
+            }
+        },
+
+        /**
+         * Event attached to title input that fires when its value is changed
+         *
+         * @protected
+         * @param {MouseEvent} event
+         */
+        _handleTitleChange: function _handleTitleChange(event) {
+            this.setState({ titleLink: event.target.value });
+
+            this._focusAltInput();
+        },
+
+        /**
+         * Event attached to al tinput that fires when key is down
+         * This method check that enter key is pushed to update the component´s state
+         *
+         * @protected
+         * @param {MouseEvent} event
+         */
+        _handleKeyDown: function _handleKeyDown(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                this._updateTitleA();
+            }
+        },
+
+        /**
+         * Method called by clicking ok button or pushing key enter to update titleLink state and to update title property from the image that is selected
+         * This method calls cancelExclusive to show the previous toolbar before enter to edit title property
+         *
+         * @protected
+         */
+        _updateTitleA: function _updateTitleA() {
+            var editor = this.props.editor.get('nativeEditor');
+
+            var newValue = this.refs.refTitleLink.value;
+
+            this.setState({
+                titleLink: newValue
+            });
+
+            this.state.element.setAttribute('title', newValue);
+
+            var elementSelected = this.props.elementSelected;
+
+            if (this.state.element.getAttribute('title')) {
+                var violation = this.state.element.getAttribute('accessibility-warnings');
+
+                violation = violation.replace(this.props.violationAccessibility, '');
+                this.state.element.setAttribute('accessibility-warnings', violation.trim());
+            }
+
+            editor.fire('actionPerformed', this);
+
+            this.props.cancelExclusive();
+        }
+    });
+
+    AlloyEditor.AccessibilityButtons[ButtonaMustHaveTitle.key] = AlloyEditor.ButtonaMustHaveTitle = ButtonaMustHaveTitle;
 })();
 'use strict';
 

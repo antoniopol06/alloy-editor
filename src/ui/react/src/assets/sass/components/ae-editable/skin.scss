@@ -5,3 +5,16 @@
         text-shadow: $selection-shadow;
     }
 }
+
+.ae-accessibility-visible {
+	border: 1px solid red;
+	padding: 4px;
+}
+
+.ae-accessibility-ok {
+    background-color: green;
+}
+
+.ae-accessibility-fail {
+    background-color: red;
+}

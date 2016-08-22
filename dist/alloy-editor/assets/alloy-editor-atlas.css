@@ -563,6 +563,16 @@
   color: #fff;
   text-shadow: none; }
 
+.ae-accessibility-visible {
+  border: 1px solid red;
+  padding: 4px; }
+
+.ae-accessibility-ok {
+  background-color: green; }
+
+.ae-accessibility-fail {
+  background-color: red; }
+
 .ae-twitter-link {
   background-color: #f8f8f8; }
   .ae-twitter-link:after {

@@ -7,11 +7,11 @@
         test: AlloyEditor.SelectionTest.embed
     }, {
         name: 'link',
-        buttons: ['linkEdit'],
+        buttons: ['linkEdit', 'accessibility'],
         test: AlloyEditor.SelectionTest.link
     }, {
         name: 'image',
-        buttons: ['imageLeft', 'imageCenter', 'imageRight'],
+        buttons: ['imageLeft', 'imageCenter', 'imageRight', 'accessibility'],
         setPosition: AlloyEditor.SelectionSetPosition.image,
         test: AlloyEditor.SelectionTest.image
     }, {

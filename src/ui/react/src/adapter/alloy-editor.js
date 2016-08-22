@@ -36,9 +36,19 @@
             editor.config.toolbars = this.get('toolbars');
 
             editor.config.removePlugins = this.get('removePlugins');
-            editor.config.extraPlugins = this.get('extraPlugins');
+            editor.config.extraPlugins = this.get('extraPlugins') + ',ae_buttonbridge,quail,dialog';
             editor.config.placeholderClass = this.get('placeholderClass');
+            editor.config.quail = {
+                path: '../lib/quail',
+                tests: [
+                  'imgHasAlt',
+                  'aMustHaveTitle',
+                  'aMustContainText'
+                ]
+            };
 
+            editor.configformat_tags = 'p;h1;h2;h3;pre';
+            editor.config.removeDialogTabs = '';
             editor.config.pasteFromWordRemoveStyles = false;
             editor.config.pasteFromWordRemoveFontStyles = false;
 
@@ -54,6 +64,37 @@
                 var editable = editor.editable();
 
                 editable.addClass('ae-editable');
+
+                editable.editor.on('accessibility', function () {
+                    editor.config.accessibility = !editor.config.accessibility;
+                    if (editor.config.accessibility) {
+                        // AXE-CORE
+                        // axe.a11yCheck(editor.element.$, { runOnly: { type: 'rule', values: ['image-alt'] } }, function (results) {
+                        //     console.log(results);
+                        //     if (results.violations) {
+                        //         results.violations.forEach(function (violation, index) {
+
+                        //             if (violation.id === 'image-alt') {
+                        //                 var img = document.querySelector(violation.nodes[0].target[0]);
+                        //                 img.className += " ae-accessibility-visible";
+                        //                 img.setAttribute('accessibility-violation', 'AltImage ErrorImage');
+                        //             }
+                        //         })
+                        //     }
+                        // });
+                        // QUAIL
+                        editor.commands.quailCheckContent.exec();
+
+                    }
+                    else{
+                        var elements = document.getElementsByClassName('ae-accessibility-visible');
+                        if (elements.length > 0) {
+                            elements.forEach(function(element, index) {
+                                element.className = element.className.replace('ae-accessibility-visible', '');
+                            });
+                        }
+                    }
+                });
 
                 editable.editor.on('readOnly', this._onReadOnlyChangeFn.bind(this));
             }.bind(this));
@@ -417,7 +458,7 @@
                 validator: '_validateToolbars',
                 value: {
                     add: {
-                        buttons: ['image', 'embed', 'camera', 'hline', 'table'],
+                        buttons: ['image', 'embed', 'camera', 'hline', 'table', 'Quail'],
                         tabIndex: 2
                     },
                     styles: {

@@ -167,6 +167,15 @@
         regexBasePath: /(^|.*[\\\/])(?:alloy-editor[^/]+|alloy-editor)\.js(?:\?.*|;.*)?$/i,
 
         /**
+         * And object, containing all currently registered accessibility buttons in AlloyEditor.
+         *
+         * @property Buttons
+         * @type {Object}
+         * @static
+         */
+        AccessibilityButtons: {},
+
+        /**
          * And object, containing all currently registered buttons in AlloyEditor.
          *
          * @property Buttons
@@ -174,6 +183,7 @@
          * @static
          */
         Buttons: {},
+
 
         /**
          * And object, containing all currently registered toolbars in AlloyEditor.
