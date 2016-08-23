@@ -43,7 +43,8 @@
                 tests: [
                   'imgHasAlt',
                   'aMustHaveTitle',
-                  'aMustContainText'
+                  'aMustContainText',
+                  'aImgAltNotRepetitive'
                 ]
             };
 

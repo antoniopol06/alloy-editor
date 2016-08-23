@@ -59,27 +59,6 @@
                     return React.createElement(button, props);
                 }, this);
 
-            if (nativeEditor.config.accessibility) {
-                var key = AlloyEditor.ButtonAccessible.key;
-
-                var props = this.mergeExclusiveProps({
-                    editor: this.props.editor,
-                    key: key,
-                    tabKey: key,
-                    tabIndex: (this.props.trigger && this.props.trigger.props.tabKey === key) ? 0 : -1,
-                    trigger: this.props.trigger
-                }, key);
-
-                props = this.mergeDropdownProps(props, key);
-
-                if (additionalProps) {
-                    props = CKEDITOR.tools.merge(props, additionalProps);
-                }
-
-                props = CKEDITOR.tools.merge(props, key);
-                toolbarButtons.push(React.createElement(AlloyEditor.ButtonAccessible, props));
-            }
-
             return toolbarButtons;
         }
     };
