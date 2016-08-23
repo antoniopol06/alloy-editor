@@ -44,12 +44,49 @@
 
             editor.config.selectionKeystrokes = this.get('selectionKeystrokes');
 
+            //A11YCHECKER CONFIG
+            editor.config.a11ychecker_quailParams = {
+                // Override Accessibility Checker gudielines from the default configuration.
+                guideline: [
+                    'imgNonDecorativeHasAlt',
+                    'imgImportantNoSpacerAlt',
+                    'aTitleDescribesDestination',
+                    'aAdjacentWithSameResourceShouldBeCombined',
+                    'aImgAltNotRepetitive',
+                    'aMustNotHaveJavascriptHref',
+                    'aMustContainText',
+                    'aSuspiciousLinkText',
+                    'blockquoteNotUsedForIndentation',
+                    'documentVisualListsAreMarkedUp',
+                    'headerH1',
+                    'headerH2',
+                    'headerH3',
+                    'headerH4',
+                    'imgAltIsDifferent',
+                    'imgAltIsTooLong',
+                    'imgAltNotEmptyInAnchor',
+                    'imgAltTextNotRedundant',
+                    'imgHasAlt',
+                    'imgShouldNotHaveTitle',
+                    'linkHasAUniqueContext',
+                    'pNotUsedAsHeader',
+                    'tableDataShouldHaveTh',
+                    'imgWithEmptyAlt'
+                ]
+            };
+            editor.config.contentsCss = [
+                'http://sdk.ckeditor.com/samples/assets/accessibilitychecker/contents.css',
+                'http://cdn.ckeditor.com/4.5.10/standard-all/contents.css'
+            ];
+
             AlloyEditor.Lang.mix(editor.config, config);
 
             editor.once('contentDom', function() {
                 if (editor.config.readOnly) {
                     this._addReadOnlyLinkClickListener(editor);
                 }
+
+                editor.commands.a11ychecker.exec();
 
                 var editable = editor.editable();
 
@@ -322,7 +359,7 @@
              */
             extraPlugins: {
                 validator: AlloyEditor.Lang.isString,
-                value: 'ae_uicore,ae_selectionregion,ae_selectionkeystrokes,ae_dragresize,ae_imagealignment,ae_addimages,ae_placeholder,ae_tabletools,ae_tableresize,ae_autolink,ae_embed,ae_autolist',
+                value: 'ae_uicore,ae_selectionregion,ae_selectionkeystrokes,ae_dragresize,ae_imagealignment,ae_addimages,ae_placeholder,ae_tabletools,ae_tableresize,ae_autolink,ae_embed,ae_autolist,ae_uibridge,ae_buttonbridge,balloonpanel,a11ychecker',
                 writeOnce: true
             },
 
@@ -417,7 +454,7 @@
                 validator: '_validateToolbars',
                 value: {
                     add: {
-                        buttons: ['image', 'embed', 'camera', 'hline', 'table'],
+                        buttons: ['image', 'embed', 'camera', 'hline', 'table', 'A11ychecker'],
                         tabIndex: 2
                     },
                     styles: {
