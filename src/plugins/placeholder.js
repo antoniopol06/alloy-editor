@@ -55,6 +55,8 @@
                     // For that reason, we will intentionally remove any content from editorNode.
                     editorNode.setHtml('');
 
+                    event.resetDirty();
+
                     editorNode.addClass(editor.config.placeholderClass);
                 }
             }
