@@ -44,11 +44,19 @@
             }
         },
 
-        createCKEditor: function(done, config) {
+        createCKEditor: function(done, config, attributes) {
             var editable = document.createElement('div');
 
             editable.setAttribute('id', 'editable');
             editable.setAttribute('contenteditable', true);
+
+            if (attributes) {
+                for (var attribute in attributes) {
+                    if (Object.prototype.hasOwnProperty.call(attributes, attribute)) {
+                        editable.setAttribute(attribute, attributes[attribute]);
+                    }
+                }
+            }
 
             document.getElementsByTagName('body')[0].appendChild(editable);
 
