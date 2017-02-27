@@ -1,0 +1,18 @@
+{
+	"alignCenter": "common.alignCenter",
+	"alignJustify": "common.alignJustify",
+	"alignLeft": "common.alignLeft",
+	"alignRight": "common.alignRight",
+	"bold": "basicstyles.bold",
+	"bulletedlist": "list.bulletedlist",
+	"cancel": "common.cancel",
+	"horizontalrule": "horizontalrule.toolbar",
+	"italic": "basicstyles.italic",
+	"numberedlist": "list.numberedlist",
+	"quote": "blockquote.toolbar",
+	"removeformat": "removeformat.toolbar",
+	"strike": "basicstyles.strike",
+	"subscript": "basicstyles.subscript",
+	"superscript": "basicstyles.superscript",
+	"underline": "basicstyles.underline"
+}
