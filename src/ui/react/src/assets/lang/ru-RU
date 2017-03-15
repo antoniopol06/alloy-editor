@@ -1,26 +1,3 @@
 {
-  "add":"Añadir",
-  "ariaUpdateNoToolbar":"Нет сено панели disponibles",
-  "ariaUpdateOneToolbar":"{toolbars} эста панель машинист доступно. Presiona АЛТ+Ф10 пункт hacerle фокус.",
-  "ariaUpdateManyToolbars":"Эстас {toolbars} панели están disponibles. Presione АЛТ+Ф10 пункт hacerle фокус.",
-  "camera":"Insertar имаген от ла камара",
-  "cameraDisabled":"Отель El navegador не soporta эста действий, о sólo эста доступно травес де протоколу https (хром)",
-  "cite":"Цита",
-  "clearInput":"Ввод Limpiar",
-  "code":"Cуdigo",
-  "columns":"Отеля columnas",
-  "confirm":"Confirmar",
-  "deleteEmbed":"Borrar элементо embebido",
-  "editLink":"Осознание вывода два Эл обвивать здесь",
-  "image":"Insertar имаген",
-  "link":"Обвивать",
-  "linkTargetBlank":"Настроек (нуева pestaña)",
-  "linkTargetDefault":"по умолчанию",
-  "linkTargetParent":"_parent",
-  "linkTargetSelf":"Отдел обслуживания клиентов tel (мисма pestaña)",
-  "linkTargetTop":"Соответствующим образом",
-  "removeLink":"Очистить сделать обвивать",
-  "rows":"Филас",
-  "table":"Insertar табле",
-  "otra":"отра"
+  "prueba":"prueba"
 }
