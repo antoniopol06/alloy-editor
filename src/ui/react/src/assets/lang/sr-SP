@@ -1,3 +1,26 @@
 {
-  
+  "add":"Añadir",
+  "ariaUpdateNoToolbar":"Нема сена панелу disponibles",
+  "ariaUpdateOneToolbar":"{toolbars} еста панел возач на располагању. Presiona АЛТ+Ф10 тачка hacerle фокус.",
+  "ariaUpdateManyToolbars":"Эстас {toolbars} табли están disponibles. Притиска или АЛТ+Ф10 тачка hacerle фокус.",
+  "camera":"Insertar имаген од ла цамара",
+  "cameraDisabled":"Хотел El navegador не soporta еста акције, о sólo еста доступна травес де https (хром)",
+  "cite":"Цита",
+  "clearInput":"Улаз Limpiar",
+  "code":"Cуdigo",
+  "columns":"Хотел columnas",
+  "confirm":"Confirmar",
+  "deleteEmbed":"Borrar элементо embebido",
+  "editLink":"Свест излаз два Ћ обвивать овде",
+  "image":"Insertar имаген",
+  "link":"Обвивать",
+  "linkTargetBlank":"Подешавања (нуева pestaña)",
+  "linkTargetDefault":"подразумевано",
+  "linkTargetParent":"_parent",
+  "linkTargetSelf":"Одељење кориснички сервис тел (мисма pestaña)",
+  "linkTargetTop":"У складу са тим",
+  "removeLink":"Јасно да обвивать",
+  "rows":"Филас",
+  "table":"Insertar табле",
+  "otra":"отра"
 }
