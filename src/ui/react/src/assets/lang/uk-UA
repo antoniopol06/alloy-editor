@@ -1,26 +1,3 @@
 {
-  "add":"Añadir",
-  "ariaUpdateNoToolbar":"Немає сіно панелі disponibles",
-  "ariaUpdateOneToolbar":"{toolbars} еста панель машиніст доступно. Presiona АЛТ+Ф10 пункт hacerle фокус.",
-  "ariaUpdateManyToolbars":"Эстас {toolbars} панелі están disponibles. Presione АЛТ+Ф10 пункт hacerle фокус.",
-  "camera":"Insertar имаген від ла камара",
-  "cameraDisabled":"Готель El navegador не soporta еста дій, про sólo еста доступно травес-де протоколу https (хром)",
-  "cite":",",
-  "clearInput":"Введення Limpiar",
-  "code":"Cуdigo",
-  "columns":"Готелю columnas",
-  "confirm":"Confirmar",
-  "deleteEmbed":"Borrar елементо embebido",
-  "editLink":"Усвідомлення виведення два Ел обвивати тут",
-  "image":"Insertar имаген",
-  "link":"Обвивати",
-  "linkTargetBlank":"Налаштувань (нуева pestaña)",
-  "linkTargetDefault":"за замовчуванням",
-  "linkTargetParent":"_parent",
-  "linkTargetSelf":"Відділ обслуговування клієнтів tel (misma pestaña)",
-  "linkTargetTop":"Відповідним чином",
-  "removeLink":"Очистити зробити обвивати",
-  "rows":"Филас",
-  "table":"Insertar таблі",
-  "otra":"отра"
+  
 }
