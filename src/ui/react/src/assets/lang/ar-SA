@@ -1,26 +1,3 @@
 {
-  "add":"Añadir",
-  "ariaUpdateNoToolbar":"لا هاي أشرطة الأدوات disponibles",
-  "ariaUpdateOneToolbar":"{toolbars} esta شريط الأدوات está disponible. Presiona ALT+F10 الفقرة hacerle التركيز.",
-  "ariaUpdateManyToolbars":"{toolbars} estas أشرطة الأدوات están disponibles. Presione ALT+F10 الفقرة hacerle التركيز.",
-  "camera":"Insertar imagen desde la cámara",
-  "cameraDisabled":"ش navegador لا soporta تهت في العمل, o sólo esta disponible a través de https (كروم)",
-  "cite":"Cita",
-  "clearInput":"Limpiar الإدخال",
-  "code":"Código",
-  "columns":"Columnas",
-  "confirm":"Confirmar",
-  "deleteEmbed":"Borrar elemento embebido",
-  "editLink":"Escribe o copia el enlace aquí",
-  "image":"Insertar imagen",
-  "link":"Enlace",
-  "linkTargetBlank":"_blank (نوفه pestaña)",
-  "linkTargetDefault":"الافتراضي",
-  "linkTargetParent":"_parent",
-  "linkTargetSelf":"_self (misma pestaña)",
-  "linkTargetTop":"_top",
-  "removeLink":"Eliminar enlace",
-  "rows":"Filas",
-  "table":"Insertar الطبلة",
-  "otra":"otra"
+  
 }
