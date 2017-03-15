@@ -1,3 +1,26 @@
 {
-  
+  "add":"Añadir",
+  "ariaUpdateNoToolbar":"No hay工具栏disponibles",
+  "ariaUpdateOneToolbar":"{toolbars}esta工具栏esta disponible的。 Presiona ALT F10第hacerle的焦点。",
+  "ariaUpdateManyToolbars":"{toolbars}estas工具栏están disponibles的。 Presione ALT F10第hacerle的焦点。",
+  "camera":"Insertar imagen desde la cámara",
+  "cameraDisabled":"El navegador没有soporta esta行动，o sólo esta disponible a través de https(铬)",
+  "cite":"Cita",
+  "clearInput":"Limpiar输入",
+  "code":"Código",
+  "columns":"Columnas",
+  "confirm":"Confirmar",
+  "deleteEmbed":"Borrar elemento embebido",
+  "editLink":"Escribe o科皮亚el enlace aqui",
+  "image":"Insertar imagen",
+  "link":"Enlace",
+  "linkTargetBlank":"_blank(nueva pestaña)",
+  "linkTargetDefault":"默认的",
+  "linkTargetParent":"_parent",
+  "linkTargetSelf":"_self(misma pestaña)",
+  "linkTargetTop":"_top",
+  "removeLink":"自制的enlace",
+  "rows":"Filas",
+  "table":"Insertar塔布拉",
+  "otra":"otra"
 }
