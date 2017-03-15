@@ -1,26 +1,3 @@
 {
-  "add":"Añadir",
-  "ariaUpdateNoToolbar":"No hay verktygsfält disponibles",
-  "ariaUpdateOneToolbar":"{toolbars} esta verktygsfältet está disponible. Presiona ALT+F10 para hacerle fokus.",
-  "ariaUpdateManyToolbars":"{toolbars} estas verktygsfält están disponibles. Presione ALT+F10 para hacerle fokus.",
-  "camera":"Insertar amerikanska imagen desde la cámara",
-  "cameraDisabled":"El navegador ingen soporta esta acción, o sólo esta disponible en través de https (Chrome)",
-  "cite":"Cita",
-  "clearInput":"Limpiar-ingång",
-  "code":"Código",
-  "columns":"Columnas",
-  "confirm":"Confirmar",
-  "deleteEmbed":"Borrar elemento embebido",
-  "editLink":"Escribe o copia el enlace aquí",
-  "image":"Insertar amerikanska imagen",
-  "link":"Enlace",
-  "linkTargetBlank":"_blank (nueva pestaña)",
-  "linkTargetDefault":"standard",
-  "linkTargetParent":"_parent",
-  "linkTargetSelf":"_self (misma pestaña)",
-  "linkTargetTop":"_top",
-  "removeLink":"Eliminar enlace",
-  "rows":"Filas",
-  "table":"Insertar tabla",
-  "otra":"otra"
+  "prueba":"prueba"
 }
