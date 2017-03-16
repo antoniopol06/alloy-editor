@@ -1,5 +1,8 @@
 {
-  "ariaUpdateNoToolbar":"no toolbars disponibles",
-  "ariaUpdateOneToolbar":"{toolbars} barra de herramientas está disponible. Presione ALT+F10 para el enfoque.",
-  "ariaUpdateManyToolbars":"{toolbars} barras de herramientas están disponibles. Presione ALT+F10 para el enfoque."
+  "add":"Agregar",
+  "prueba":"Prueba",
+  "prueba dos":"prueba 2",
+  "prueba tres":"prueba 3",
+  "prueba cuatro":"prueba 4",
+  "prueba cinco":"prueba 5"
 }
