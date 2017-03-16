@@ -1,5 +1,21 @@
 {
-  "add":"Додајте",
-  "two":"два",
-  "four":"четири { esto no se traduce }"
+  "camera":"Уметање слике са камере",
+  "cameraDisabled":"Не подржава ову радњу, или је доступна само на хттпс (хром).",
+  "cite":"Цитат",
+  "clearInput":"Да Обришете Поље За Унос",
+  "code":"Код",
+  "columns":"Седла",
+  "confirm":"Потврди",
+  "deleteEmbed":"Додајте брисање",
+  "editLink":"Унесите или Налепите линк овде",
+  "image":"Уметање Слике",
+  "link":"Линк",
+  "linkTargetBlank":"_blank (нови одељак)",
+  "linkTargetDefault":"подразумевано",
+  "linkTargetParent":"_parent",
+  "linkTargetSelf":"Одељење кориснички сервис тел (картици)",
+  "linkTargetTop":"У складу са тим",
+  "removeLink":"Уклоните линк",
+  "rows":"Линија",
+  "table":"Да Убаците Табелу"
 }
