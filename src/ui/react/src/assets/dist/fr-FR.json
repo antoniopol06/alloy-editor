@@ -1,5 +1,5 @@
 {
-  "ariaUpdateNoToolbar":"Pas de barres d'outils sont disponibles",
-  "ariaUpdateOneToolbar":"{toolbars} de la barre d'outils est disponible. Appuyez sur ALT+F10 pour se concentrer.",
-  "ariaUpdateManyToolbars":"{toolbars} barres d'outils sont disponibles. Appuyez sur ALT+F10 pour se concentrer."
+  "add":"Ajouter",
+  "two":"deux",
+  "four":"quatre { esto no se traduce }"
 }
