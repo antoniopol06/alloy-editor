@@ -1,21 +1,5 @@
 {
-  "camera":"إدراج صورة من الكاميرا",
-  "cameraDisabled":"المتصفح لا يدعم هذا العمل ، أو أنه يتوفر على https فقط (كروم).",
-  "cite":"استشهد",
-  "clearInput":"واضح حقل الإدخال",
-  "code":"رمز",
-  "columns":"Cols",
-  "confirm":"تأكيد",
-  "deleteEmbed":"حذف تضمين",
-  "editLink":"اكتب أو الصق الرابط هنا",
-  "image":"إدراج صورة",
-  "link":"الرابط",
-  "linkTargetBlank":"_blank (علامة تبويب جديدة)",
-  "linkTargetDefault":"الافتراضي",
-  "linkTargetParent":"_parent",
-  "linkTargetSelf":"_self (نفس التبويب)",
-  "linkTargetTop":"_top",
-  "removeLink":"إزالة الرابط",
-  "rows":"الصفوف",
-  "table":"إدراج جدول"
+  "ariaUpdateNoToolbar":"لا أشرطة الأدوات المتوفرة",
+  "ariaUpdateOneToolbar":"{toolbars} شريط الأدوات المتاحة. اضغط على ALT+F10 التركيز.",
+  "ariaUpdateManyToolbars":"{toolbars} أشرطة الأدوات المتوفرة. اضغط على ALT+F10 التركيز."
 }
