@@ -1,5 +1,5 @@
 {
-  "add":"Lisää",
-  "two":"kaksi",
-  "four":"four { esto no se traduce }"
+  "ariaUpdateNoToolbar":"Ei työkalurivit ovat saatavilla",
+  "ariaUpdateOneToolbar":"{toolbars} työkalurivi on käytettävissä. Paina ALT+F10 keskittyä.",
+  "ariaUpdateManyToolbars":"{toolbars} työkalurivit ovat saatavilla. Paina ALT+F10 keskittyä."
 }
