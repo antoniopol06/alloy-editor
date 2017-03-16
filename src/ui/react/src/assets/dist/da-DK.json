@@ -1,0 +1,5 @@
+{
+  "ariaUpdateNoToolbar":"Ingen er tilgængelige værktøjslinjer",
+  "ariaUpdateOneToolbar":"{toolbars} toolbar er tilgængelig. Tryk på ALT+F10 for at fokusere.",
+  "ariaUpdateManyToolbars":"{toolbars} værktøjslinjer er tilgængelige. Tryk på ALT+F10 for at fokusere."
+}
