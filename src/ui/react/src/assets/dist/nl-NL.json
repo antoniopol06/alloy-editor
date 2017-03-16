@@ -1,5 +1,21 @@
 {
-  "add":"Toevoegen",
-  "two":"twee",
-  "four":"vier { esto no se traduce }"
+  "camera":"Afbeelding invoegen vanaf de Camera",
+  "cameraDisabled":"De browser geen ondersteuning voor deze actie, of het is te vinden op https (Chrome).",
+  "cite":"Citeren",
+  "clearInput":"Duidelijke Input Veld",
+  "code":"Code",
+  "columns":"Cols",
+  "confirm":"Bevestigen",
+  "deleteEmbed":"Verwijderen insluiten",
+  "editLink":"Typ of plak de link hier",
+  "image":"Afbeelding Invoegen",
+  "link":"Link",
+  "linkTargetBlank":"_blank (nieuw tabblad)",
+  "linkTargetDefault":"standaard",
+  "linkTargetParent":"_parent",
+  "linkTargetSelf":"_self (tabblad)",
+  "linkTargetTop":"_top",
+  "removeLink":"Koppeling verwijderen",
+  "rows":"Rijen",
+  "table":"Tabel Invoegen"
 }
