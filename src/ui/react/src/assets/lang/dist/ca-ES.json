@@ -1,26 +1,3 @@
 {
-  "add":"Añadir",
-  "ariaUpdateNoToolbar":"No hay barres d'eines disponibles",
-  "ariaUpdateOneToolbar":"{toolbars} aquesta barra google està disponible. Presiona ALT+F10 para hacerle focus.",
-  "ariaUpdateManyToolbars":"{toolbars} estas barres d'eines están disponibles. Presione ALT+F10 para hacerle focus.",
-  "camera":"Insertar imagen desde la cámara",
-  "cameraDisabled":"El navegador no soporta aquesta acció, o solo esta disponible a través de l'adreça https (Chrome)",
-  "cite":"Trlis",
-  "clearInput":"Limpiar d'entrada",
-  "code":"Codi",
-  "columns":"Columnas",
-  "confirm":"Confirmar",
-  "deleteEmbed":"Borrar elemento embebido",
-  "editLink":"Escriu o copia el enlace aquí",
-  "image":"Insertar imagen",
-  "link":"Enlace",
-  "linkTargetBlank":"_blank (nueva pestaña)",
-  "linkTargetDefault":"per defecte",
-  "linkTargetParent":"_parent",
-  "linkTargetSelf":"_self (misma pestaña)",
-  "linkTargetTop":"_top",
-  "removeLink":"Eliminar enlace",
-  "rows":"Filas",
-  "table":"Insertar tabla",
-  "otra":"otra"
+  "prueba":"prova"
 }
