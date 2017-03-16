@@ -1,4 +1,21 @@
 {
-  "add":"Add",
-  "two":"két"
+  "camera":"Kép beszúrása a Kamera",
+  "cameraDisabled":"A böngésző nem támogatja ezt a műveletet, vagy elérhető a https (Chrome).",
+  "cite":"Idézet",
+  "clearInput":"Tiszta Beviteli Mező",
+  "code":"Kód",
+  "columns":"Cols",
+  "confirm":"Erősítse meg",
+  "deleteEmbed":"Törlés beágyazása",
+  "editLink":"Írja be vagy illessze be a linket itt",
+  "image":"Kép Beszúrása",
+  "link":"Kapcsolat",
+  "linkTargetBlank":"_blank (új lap)",
+  "linkTargetDefault":"alapértelmezett",
+  "linkTargetParent":"_parent",
+  "linkTargetSelf":"_self (ugyanazon a lapon)",
+  "linkTargetTop":"_top",
+  "removeLink":"A hivatkozás eltávolítása",
+  "rows":"Sorok",
+  "table":"Táblázat Beszúrása"
 }
