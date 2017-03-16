@@ -1,0 +1,3 @@
+files:
+  - source: /src/lang-keys/*.json
+    translation: /src/ui/react/src/assets/%locale%.%file_extension%
