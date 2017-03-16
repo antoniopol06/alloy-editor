@@ -1,5 +1,21 @@
 {
-  "add":"Ekle",
-  "two":"iki",
-  "four":"dört { esto no se traduce }"
+  "camera":"Kameradan Resim Ekle",
+  "cameraDisabled":"Tarayıcı bu eylemi desteklemiyor veya https (yalnızca Chrome) mevcuttur.",
+  "cite":"Alıntı",
+  "clearInput":"Net Giriş Alan",
+  "code":"Kod",
+  "columns":"Renk",
+  "confirm":"Onaylamak",
+  "deleteEmbed":"Sil göm",
+  "editLink":"Buraya yazın veya yapıştırın linki",
+  "image":"Resim Ekle",
+  "link":"Link",
+  "linkTargetBlank":"(Yeni sekme)_blank",
+  "linkTargetDefault":"varsayılan",
+  "linkTargetParent":"Şeklindedir",
+  "linkTargetSelf":"_self (aynı sekme)",
+  "linkTargetTop":"_top",
+  "removeLink":"Bağlantıyı Kaldır",
+  "rows":"Satır",
+  "table":"Tablo Ekle"
 }
