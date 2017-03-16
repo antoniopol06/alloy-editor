@@ -1,5 +1,21 @@
 {
-  "add":"Přidat",
-  "two":"dva",
-  "four":"čtyři { esto no se traduce }"
+  "camera":"Vložit Obrázek z Fotoaparátu",
+  "cameraDisabled":"Prohlížeč nepodporuje tuto akci, nebo je k dispozici na https (pouze Chrome).",
+  "cite":"Citovat",
+  "clearInput":"Vymazat Pole Pro Zadávání",
+  "code":"Kód",
+  "columns":"Cols",
+  "confirm":"Potvrdit",
+  "deleteEmbed":"Odstranit vložte si",
+  "editLink":"Zadejte nebo vložte odkaz zde",
+  "image":"Vložit Obrázek",
+  "link":"Odkaz",
+  "linkTargetBlank":"_blank (nová karta)",
+  "linkTargetDefault":"výchozí",
+  "linkTargetParent":"_parent",
+  "linkTargetSelf":"_self (stejná karta)",
+  "linkTargetTop":"_top",
+  "removeLink":"Odstranit odkaz",
+  "rows":"Řádky",
+  "table":"Vložit Tabulku"
 }
