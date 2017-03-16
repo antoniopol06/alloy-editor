@@ -1,5 +1,5 @@
 {
-  "ariaUpdateNoToolbar":"Nem eszköztárak elérhető",
-  "ariaUpdateOneToolbar":"{toolbars} eszköztár áll rendelkezésre. Nyomja meg az ALT+F10 koncentrálni.",
-  "ariaUpdateManyToolbars":"{toolbars} eszköztárak állnak rendelkezésre. Nyomja meg az ALT+F10 koncentrálni."
+  "add":"Add",
+  "two":"két",
+  "four":"négy { esto no se traduce }"
 }
