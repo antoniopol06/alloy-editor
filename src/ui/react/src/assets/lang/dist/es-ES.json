@@ -1,3 +1,26 @@
 {
-  
+  "add":"Añadir",
+  "ariaUpdateNoToolbar":"No hay barras de herramientas disponibles",
+  "ariaUpdateOneToolbar":"{toolbars} esta barra de herramientas está disponible. Presiona ALT+F10 para hacerle focus.",
+  "ariaUpdateManyToolbars":"{toolbars} estas barras de herramientas están disponibles. Presione ALT+F10 para hacerle focus.",
+  "camera":"Insertar imagen desde la cámara",
+  "cameraDisabled":"El navegador no soporta esta acción, o sólo esta disponible a través de https (Chrome)",
+  "cite":"Cita",
+  "clearInput":"Limpiar la entrada",
+  "code":"Código",
+  "columns":"Columnas",
+  "confirm":"Confirmar",
+  "deleteEmbed":"Borrar elemento embebido",
+  "editLink":"Escribe o copia el enlace aquí",
+  "image":"Insertar imagen",
+  "link":"Enlace",
+  "linkTargetBlank":"_blank (nueva pestaña)",
+  "linkTargetDefault":"por defecto",
+  "linkTargetParent":"_parent",
+  "linkTargetSelf":"_self (misma pestaña)",
+  "linkTargetTop":"_top",
+  "removeLink":"Eliminar enlace",
+  "rows":"Filas",
+  "table":"Insertar tabla",
+  "otra":"otra"
 }
