@@ -1,0 +1,5 @@
+{
+  "ariaUpdateNoToolbar":"Нема траци алата на располагању",
+  "ariaUpdateOneToolbar":"Трака са алаткама {toolbars} доступна. Притисните тастер Alt+F10 да се фокусира.",
+  "ariaUpdateManyToolbars":"{toolbars} траци алата на располагању. Притисните тастер Alt+F10 да се фокусира."
+}
