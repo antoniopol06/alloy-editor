@@ -1,21 +1,5 @@
 {
-  "camera":"Вставка зображення з камери",
-  "cameraDisabled":"Браузер не підтримує цю дію, або це доступно тільки на https (хром).",
-  "cite":"Цитувати",
-  "clearInput":"Очистити Поле Вводу",
-  "code":"Код",
-  "columns":"Сідла",
-  "confirm":"Підтвердити",
-  "deleteEmbed":"Видаляти додайте",
-  "editLink":"Введіть або Вставте посилання тут",
-  "image":"Вставка Зображення",
-  "link":"Посилання",
-  "linkTargetBlank":"_blank (новий розділ)",
-  "linkTargetDefault":"за замовчуванням",
-  "linkTargetParent":"_parent",
-  "linkTargetSelf":"Відділ обслуговування клієнтів tel (вкладці)",
-  "linkTargetTop":"Відповідним чином",
-  "removeLink":"Видалити посилання",
-  "rows":"Рядків",
-  "table":"Вставити Таблицю"
+  "add":"Додати",
+  "two":"два",
+  "four":"чотири { esto no se traduce }"
 }
