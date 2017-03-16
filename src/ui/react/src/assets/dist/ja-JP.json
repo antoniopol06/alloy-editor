@@ -1,5 +1,5 @@
 {
-  "ariaUpdateNoToolbar":"Noツをご用意",
-  "ariaUpdateOneToolbar":"{toolbars}ツールバーが可能です。 ALT+F10に注力します。",
-  "ariaUpdateManyToolbars":"{toolbars}追加が可能です。 ALT+F10に注力します。"
+  "add":"追加",
+  "two":"二つの",
+  "four":"四{ esto no se traduce }"
 }
