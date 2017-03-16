@@ -1,5 +1,5 @@
 {
-  "ariaUpdateNoToolbar":"No hay barras de herramientas están disponibles",
-  "ariaUpdateOneToolbar":"{toolbars} barra de herramientas está disponible. Presione ALT+F10 para el enfoque.",
-  "ariaUpdateManyToolbars":"{toolbars} barras de herramientas están disponibles. Presione ALT+F10 para el enfoque."
+  "add":"Agregar",
+  "two":"dos",
+  "four":"cuatro { esto no se traduce }"
 }
