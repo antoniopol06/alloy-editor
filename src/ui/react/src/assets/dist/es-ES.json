@@ -1,7 +1,21 @@
 {
-  "add":"Agregar",
-  "prueba":"Prueba",
-  "prueba dos":"prueba 2",
-  "prueba tres":"prueba 3",
-  "prueba cuatro":"prueba 4"
+  "camera":"Insertar Imagen desde la Cámara",
+  "cameraDisabled":"The browser does not support this action, or it is available on https only (Chrome).",
+  "cite":"Cite",
+  "clearInput":"Clear Input Field",
+  "code":"Code",
+  "columns":"Cols",
+  "confirm":"Confirm",
+  "deleteEmbed":"Delete embed",
+  "editLink":"Type or paste link here",
+  "image":"Insert Image",
+  "link":"Link",
+  "linkTargetBlank":"_blank (new tab)",
+  "linkTargetDefault":"default",
+  "linkTargetParent":"_parent",
+  "linkTargetSelf":"_self (same tab)",
+  "linkTargetTop":"_top",
+  "removeLink":"Remove link",
+  "rows":"Rows",
+  "table":"Insert Table"
 }
