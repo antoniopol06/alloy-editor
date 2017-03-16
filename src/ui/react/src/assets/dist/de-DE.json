@@ -1,5 +1,5 @@
 {
-  "ariaUpdateNoToolbar":"Keine Symbolleisten verfügbar sind",
-  "ariaUpdateOneToolbar":"{toolbars} Symbolleiste verfügbar ist. Drücken Sie ALT+F10 zu konzentrieren.",
-  "ariaUpdateManyToolbars":"{toolbars} Symbolleisten verfügbar sind. Drücken Sie ALT+F10 zu konzentrieren."
+  "add":"Hinzufügen",
+  "two":"zwei",
+  "four":"vier { esto no se traduce }"
 }
