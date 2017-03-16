@@ -1,0 +1,5 @@
+{
+  "ariaUpdateNoToolbar":"Cap de les barres d'eines estan disponibles",
+  "ariaUpdateOneToolbar":"{toolbars} la barra google està disponible. Premeu ALT+F10, a focus.",
+  "ariaUpdateManyToolbars":"{toolbars} barres d'eines estan disponibles. Premeu ALT+F10, a focus."
+}
