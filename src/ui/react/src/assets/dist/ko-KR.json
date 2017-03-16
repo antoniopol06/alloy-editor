@@ -1,5 +1,5 @@
 {
-  "ariaUpdateNoToolbar":"없음 도구 모음을 사용할 수 있",
-  "ariaUpdateOneToolbar":"{toolbars} 도구 모음을 사용할 수 있습니다. ALT+F10 을 초점입니다.",
-  "ariaUpdateManyToolbars":"{toolbars} 도구 모음을 사용할 수 있습니다. ALT+F10 을 초점입니다."
+  "add":"추가",
+  "two":"두 개의",
+  "four":"네 { esto no se traduce }"
 }
