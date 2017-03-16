@@ -1,8 +1,5 @@
 {
-  "add":"Add",
-  "prueba":"Prueba",
-  "prueba dos":"prueba 2",
-  "prueba tres":"prueba 3",
-  "prueba cuatro":"prueba 4",
-  "prueba cinco":"prueba 5"
+  "ariaUpdateNoToolbar":"No toolbars are available",
+  "ariaUpdateOneToolbar":"{toolbars} toolbar is available. Press ALT+F10 to focus.",
+  "ariaUpdateManyToolbars":"{toolbars} toolbars are available. Press ALT+F10 to focus."
 }
