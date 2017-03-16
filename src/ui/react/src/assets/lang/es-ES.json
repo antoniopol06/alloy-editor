@@ -1,5 +1,5 @@
 {
-  "ariaUpdateNoToolbar":"No toolbars are available",
-  "ariaUpdateOneToolbar":"{toolbars} toolbar is available. Press ALT+F10 to focus.",
-  "ariaUpdateManyToolbars":"{toolbars} toolbars are available. Press ALT+F10 to focus."
+  "add":"Agregar",
+  "prueba":"Prueba",
+  "prueba dos":"prueba 2"
 }
