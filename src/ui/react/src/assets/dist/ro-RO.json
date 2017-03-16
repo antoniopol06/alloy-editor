@@ -1,5 +1,21 @@
 {
-  "add":"Adauga",
-  "two":"două",
-  "four":"patru { esto no se traduce }"
+  "camera":"Inserare Imagine din Camera",
+  "cameraDisabled":"Browser-ul nu are suport pentru această acțiune, sau este disponibil pe https (Chrome).",
+  "cite":"Cita",
+  "clearInput":"Clar Câmp De Intrare",
+  "code":"Cod",
+  "columns":"Cols",
+  "confirm":"Confirma",
+  "deleteEmbed":"Șterge încorpora",
+  "editLink":"Tastați sau lipiți link-ul aici",
+  "image":"Inserare Imagine",
+  "link":"Link-ul",
+  "linkTargetBlank":"_blank (new tab)",
+  "linkTargetDefault":"default",
+  "linkTargetParent":"_parent",
+  "linkTargetSelf":"_self (aceeași filă)",
+  "linkTargetTop":"_top",
+  "removeLink":"Elimina link-ul",
+  "rows":"Rânduri",
+  "table":"Insert Table"
 }
