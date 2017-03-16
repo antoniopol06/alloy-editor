@@ -1,0 +1,5 @@
+{
+  "ariaUpdateNoToolbar":"Немає панелі інструментів доступні",
+  "ariaUpdateOneToolbar":"Панель інструментів {toolbars} доступна. Натисніть клавішу Alt+F10, щоб зосередитися.",
+  "ariaUpdateManyToolbars":"{toolbars} панелі інструментів доступні. Натисніть клавішу Alt+F10, щоб зосередитися."
+}
