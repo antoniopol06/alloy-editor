@@ -36,6 +36,13 @@ function errorHandler(error) {
  * @return {String} The normalized string
  */
 var getStringLangValue = function(value, lang) {
+    /**
+     * Set english language as default to take strings from CKEDITOR
+     */
+    if (!CKEDITOR.lang[lang]) {
+        lang = 'en';
+    }
+
     if (value.indexOf('.') !== -1) {
         value = 'CKEDITOR.lang["' + lang + '"].' + value.replace(/"/g, '');
     }
@@ -57,15 +64,36 @@ var updateLangFiles = function(callback) {
         Strings: {}
     };
 
-    var langWalker = walk.walk(reactLangDir);
-    langWalker.on('end', callback);
+    var options = {
+        filters: ['vendor']
+    };
+
+    require(path.join(rootDir, 'lib', 'lang/en.js'));
+
+    var langWalker = walk.walk(langDir, options);
+        langWalker.on('end', callback);
 
     // Iterate over every existing lang file inside src/ui/react/lang/
     langWalker.on('file', function(root, fileStats, next) {
-        var lang = path.basename(fileStats.name, '.js');
+        var locale = path.basename(fileStats.name, '.json').toLowerCase();
+
+        var lang = locale.split('-')[0];
+
+        var ckeditorFileExist = false;
+
+        var localePath = path.join(rootDir, 'lib', 'lang', locale + '.js');
+
+        var langPath = path.join(rootDir, 'lib', 'lang', lang + '.js');
 
         // Load the matching CKEDITOR lang file with all the strings
-        require(path.join(rootDir, 'lib', 'lang', fileStats.name));
+        if (fs.existsSync(localePath)) {
+            require(localePath);
+            lang = locale;
+            ckeditorFileExist = true;
+        } else if (fs.existsSync(langPath)) {
+            require(langPath);
+            ckeditorFileExist = true;
+        }
 
         Object.keys(ckeditorLangContent).forEach(function (key) {
             AlloyEditor.Strings[key] = getStringLangValue(ckeditorLangContent[key], lang);
@@ -74,7 +102,7 @@ var updateLangFiles = function(callback) {
         // Try to load translations for "lang"
         var translations;
         try {
-            translations = require(path.join(langDir, lang + '.json'));
+            translations = require(path.join(langDir, locale + '.json'));
         } catch (err) {
             console.log('translations not found for:', lang);
         }
@@ -85,8 +113,8 @@ var updateLangFiles = function(callback) {
             });
         }
 
-        // Update the contents of the current lang file
-        fs.writeFile(path.join(reactDir, 'lang', fileStats.name),
+        //Update the contents of the current lang file
+        fs.writeFile(path.join(reactDir, 'lang', lang + '.js'),
             'AlloyEditor.Strings = ' + JSON.stringify(AlloyEditor.Strings) + ';',
             function(err) {
                 if (err) {
