@@ -1,22 +1,23 @@
 (function() {
     'use strict';
 
+
+    function Core(config) {
+        Core.superclass.constructor.call(this, config);
+    }
+
     /**
      * AlloyEditor main class. Creates instance of the editor and provides the user configuration
      * to the UI.
      *
      * @class Core
-     * @constructor
      */
-    function Core(config) {
-        Core.superclass.constructor.call(this, config);
-    }
-
     AlloyEditor.OOP.extend(Core, AlloyEditor.Base, {
         /**
          * Initializer lifecycle implementation for the AlloyEditor class. Creates a CKEditor
          * instance, passing it the provided configuration attributes.
          *
+         * @memberof AlloyEditor.Core
          * @protected
          * @method initializer
          * @param config {Object} Configuration object literal for the editor.
@@ -69,6 +70,7 @@
          * Destructor lifecycle implementation for the AlloyEdtor class. Destroys the CKEditor
          * instance and destroys all created toolbars.
          *
+         * @memberof Core
          * @protected
          * @method destructor
          */
@@ -103,6 +105,7 @@
         /**
          * Clear selections from window object
          *
+         * @memberof Core
          * @protected
          * @method _clearSelections
          */
@@ -120,6 +123,7 @@
         /**
          * Method to set default link behavior
          *
+         * @memberof Core
          * @protected
          * @method _addReadOnlyLinkClickListener
          * @param {Object} editor
@@ -134,6 +138,7 @@
          * Called on `click` event when the editor is in read only mode. Navigates to link's URL or opens
          * the link in a new window.
          *
+         * @memberof Core
          * @event readOnlyClick
          * @protected
          * @method _defaultReadOnlyClickFn
@@ -165,6 +170,7 @@
         /**
          * Retrieves the native CKEditor instance. Having this, the developer may use the API of CKEditor OOTB.
          *
+         * @memberof Core
          * @protected
          * @method _getNativeEditor
          * @return {Object} The current instance of CKEditor.
@@ -176,6 +182,7 @@
         /**
          * Redirects the browser to a given link
          *
+         * @memberof Core
          * @protected
          * @method _redirectLink
          * @param {string} href The href to take the browser to
@@ -193,6 +200,7 @@
         /**
          * Renders the specified from the user toolbars.
          *
+         * @memberof Core
          * @protected
          * @method _renderUI
          */
@@ -222,6 +230,7 @@
          * the Id of the element which have to be retrieved from the DOM.
          * If an HTML Element is passed, the element itself will be returned.
          *
+         * @memberof Core
          * @method _toElement
          * @protected
          * @param {!(String|HTMLElement)} value String, which have to correspond to an HTML element from the DOM,
@@ -241,6 +250,7 @@
          * [here](http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-allowedContent) for more information about the
          * supported values.
          *
+         * @memberof Core
          * @protected
          * @method _validateAllowedContent
          * @param {Any} The value to be checked
@@ -253,6 +263,7 @@
         /**
          * Validates the value of toolbars attribute
          *
+         * @memberof Core
          * @protected
          * @method _validateToolbars
          * @param {Any} The value to be checked
@@ -268,10 +279,11 @@
              * Look on the [official CKEditor API](http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-allowedContent)
              * for more information about the valid values.
              *
+             * @memeberof Core
              * @property allowedContent
              * @default true
              * @writeOnce
-             * @type {Boolean, String, Object}
+             * @type {(Boolean | String| Object)}
              */
             allowedContent: {
                 validator: '_validateAllowedContent',
@@ -283,6 +295,7 @@
              * Specifies whether AlloyEditor set the contenteditable attribute
              * to "true" on its srcNode.
              *
+             * @memberof Core
              * @property enableContentEditable
              * @type Boolean
              * @default true
@@ -297,6 +310,7 @@
             /**
              * The delay (timeout), in ms, after which events such like key or mouse events will be processed.
              *
+             * @memberof Core
              * @property eventsDelay
              * @type {Number}
              */
@@ -309,6 +323,7 @@
              * Specifies the extra plugins which have to be loaded to the current CKEditor instance in order to
              * make AlloyEditor to work properly.
              *
+             * @memberof Core
              * @property extraPlugins
              * @default 'uicore,selectionregion,dragresize,addimages,placeholder,tabletools,tableresize,autolink'
              * @writeOnce
@@ -323,6 +338,7 @@
             /**
              * Retrieves the native CKEditor instance. Having this, the developer may use the full API of CKEditor.
              *
+             * @memberof Core
              * @property nativeEditor
              * @readOnly
              * @type {Object}
@@ -337,6 +353,7 @@
              * {{#crossLink "CKEDITOR.plugins.ae_placeholder}}{{/crossLink}}
              * when editor is not focused.
              *
+             * @memberof Core
              * @property placeholderClass
              * @default 'ae-placeholder'
              * @writeOnce
@@ -359,10 +376,11 @@
              * UI - those of AlloyEditor. You will be fully able to use both OOTB CKEditor and AlloyEditor on the same
              * page!
              *
+             * @memberof Core
              * @property removePlugins
              * @default 'contextmenu,toolbar,elementspath,resize,liststyle,link'
              * @writeOnce
-             * @type {String}
+             * @type String
              */
             removePlugins: {
                 validator: AlloyEditor.Lang.isString,
@@ -376,6 +394,7 @@
              * definition](http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-keystrokes) and a selection property with
              * the selection name to trigger.
              *
+             * @memberof Core
              * @property selectionKeystrokes
              * @type {Array}
              */
@@ -393,6 +412,7 @@
             /**
              * The Node ID or HTMl node, which AlloyEditor should use as an editable area.
              *
+             * @memberof Core
              * @property srcNode
              * @type String | Node
              * @writeOnce
@@ -405,6 +425,7 @@
             /**
              * The toolbars configuration for this editor instance
              *
+             * @memberof Core
              * @property {Object} toolbars
              */
             toolbars: {
@@ -424,6 +445,7 @@
             /**
              * The Node ID or HTMl node, where AlloyEditor's UI should be rendered.
              *
+             * @memberof Core
              * @property uiNode
              * @type String | Node
              * @writeOnce
