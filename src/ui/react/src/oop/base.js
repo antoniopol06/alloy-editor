@@ -1,23 +1,23 @@
 (function() {
     'use strict';
 
-    /**
-     * Quick and dirty impl of Base class.
-     *
-     * @class Base
-     * @constructor
-     */
     function Base(config) {
         Base.superclass.constructor.call(this, config);
 
         this.init(config);
     }
 
+    /**
+     * Quick and dirty impl of Base class.
+     *
+     * @class Base
+     */
     AlloyEditor.OOP.extend(Base, AlloyEditor.Attribute, {
         /**
          * Calls the `initializer` method of each class which extends Base starting from the parent to the child.
          * Will pass the configuration object to each initializer method.
          *
+         * @memberof Base
          * @method init
          * @param {Object} config Configuration object
          */
@@ -28,6 +28,7 @@
         /**
          * Calls the `destructor` method of each class which extends Base starting from the parent to the child.
          *
+         * @memberof Base
          * @method destroy
          */
         destroy: function() {
@@ -37,6 +38,7 @@
         /**
          * Calls a method of each class, which is being present in the hierarchy starting from parent to the child.
          *
+         * @memberof Base
          * @protected
          * @method _callChain
          * @param {String} wat  The method, which should be invoked

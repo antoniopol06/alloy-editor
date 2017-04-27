@@ -11,6 +11,7 @@
          * Check if the passed value is an array.
          *
          * @static
+         * @memberof Lang
          * @method isArray
          * @param {Any} value The value which have to be checked.
          * @return {Boolean} True if the passed value is an array, false otherwise.
@@ -23,6 +24,7 @@
          * Check if the passed value is boolean.
          *
          * @static
+         * @memberof Lang
          * @method isBoolean
          * @param {Any} value The value which have to be checked.
          * @return {Boolean} True if the passed value is boolean, false otherwise.
@@ -35,6 +37,7 @@
          * Check if the passed value is a function.
          *
          * @static
+         * @memberof Lang
          * @method isFunction
          * @param {Any} value The value which have to be checked.
          * @return {Boolean} True if the passed value is a function, false otherwise.
@@ -47,6 +50,7 @@
          * Check if the passed value is NULL.
          *
          * @static
+         * @memberof Lang
          * @method isNull
          * @param {Any} value The value which have to be checked.
          * @return {Boolean} True if the passed value is NULL, false otherwise.
@@ -59,6 +63,7 @@
          * Check if the passed value is number.
          *
          * @static
+         * @memberof Lang
          * @method isNumber
          * @param {Any} value The value which have to be checked.
          * @return {Boolean} True if the passed value is number, false otherwise.
@@ -71,6 +76,7 @@
          * Check if the passed value is an object
          *
          * @static
+         * @memberof Lang
          * @method isObject
          * @param {Any} value The value which have to be checked.
          * @return {Boolean} True if the passed value is an object, false otherwise.
@@ -85,6 +91,7 @@
          * Check if the passed value is a string.
          *
          * @static
+         * @memberof Lang
          * @method isString
          * @param {Any} value The value which have to be checked.
          * @return {Boolean} True if the passed value is a string, false otherwise.
@@ -98,6 +105,7 @@
          * The function will add all properties, not only these owned by the supplier.
          *
          * @static
+         * @memberof Lang
          * @method mix
          * @param {Object} receiver The object which will receive properties.
          * @param {Object} supplier The object which provides properties.
@@ -117,6 +125,7 @@
          * Converts value to Integer.
          *
          * @static
+         * @memberof Lang
          * @method toInt
          * @param {Any} value The value which have to be converted to Integer.
          * @return {Integer} The converted value.

@@ -5,8 +5,7 @@
      * Attribute implementation.
      *
      * @class Attribute
-     * @constructor
-    */
+     */
     function Attribute(config) {
         this.__config__ = config || {};
         this.__ATTRS__ = {};
@@ -18,6 +17,7 @@
         /**
          * Retrieves the value of an attribute.
          *
+         * @memberof Attribute
          * @method get
          * @param {String} attr The attribute which value should be retrieved.
          * @return {Any} The value of the attribute.
@@ -45,6 +45,7 @@
         /**
          * Sets the value of an attribute.
          *
+         * @memberof Attribute
          * @method set
          * @param {String} attr The attribute which value should be set.
          * @param {Any} value The value which should be set to the attribute.
@@ -84,6 +85,7 @@
          * If param provided as string, a corresponding function in this object will
          * be called. If provided param is a function, it will be directly called.
          *
+         * @memberof Attribute
          * @protected
          * @method _callStringOrFunction
          * @param  {String|Function} stringOrFunction The function which should be called
@@ -110,6 +112,7 @@
          * Initializes an attribute. Sets its default value depending on the flags of the
          * attribute and the passed configuration object to the constructor.
          *
+         * @memberof Attribute
          * @protected
          * @method _init
          * @param {String} attr The name of the attribute which have to be initialized.
@@ -179,6 +182,7 @@
          * when there is an own property with this name in the local collection of attribute values
          * for the current instance.
          *
+         * @memberof Attribute
          * @protected
          * @method _isInitialized
          * @param {String} attr The attribute which should be checked if it is initialized.

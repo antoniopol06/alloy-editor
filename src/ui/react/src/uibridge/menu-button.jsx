@@ -155,7 +155,6 @@
      * @class CKEDITOR.plugins.ae_menubuttonbridge
      * @requires CKEDITOR.plugins.ae_uibridge
      * @requires CKEDITOR.plugins.ae_menubridge
-     * @constructor
      */
     CKEDITOR.plugins.add('ae_menubuttonbridge', {
         requires: ['ae_uibridge', 'ae_menubridge'],
@@ -164,7 +163,8 @@
          * Set the add handler for UI_MENUBUTTON to our own. We do this in the init phase to override
          * the one in the native plugin in case it's present.
          *
-         * @method init
+         * @memberof CKEDITOR.plugins.ae_menubuttonbridge
+         * @method beforeInit
          * @param {Object} editor The CKEditor instance being initialized
          */
         beforeInit: function(editor) {

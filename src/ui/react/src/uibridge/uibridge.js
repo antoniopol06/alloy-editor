@@ -12,12 +12,12 @@
      * - editor.ui.add(name, type, definition)
      *
      * @class CKEDITOR.plugins.ae_uibridge
-     * @constructor
      */
     CKEDITOR.plugins.add('ae_uibridge', {
         /**
          * Initialization of the plugin, part of CKEditor plugin lifecycle.
          *
+         * @memberof CKEDITOR.plugins.ae_uibridge
          * @method beforeInit
          * @param {Object} editor The current editor instance
          */

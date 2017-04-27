@@ -15,12 +15,14 @@ var template = require('gulp-template');
 var uglify = require('gulp-uglify');
 var yuidoc = require('gulp-yuidoc-relative');
 var zip = require('gulp-zip');
+var jsdoc = require("gulp-jsdoc3");
 
 var rootDir = path.join(__dirname, '..', '..', '..', '..');
 var reactDir = path.join(rootDir, 'src', 'ui', 'react');
 var pkg = require(path.join(rootDir, 'package.json'));
 
 var apiFolder = path.join(rootDir, 'api');
+var apiFolderJsDoc = path.join(rootDir, 'api-jsdoc');
 var distFolder = path.join(rootDir, 'dist');
 var editorDistFolder = path.join(distFolder, 'alloy-editor');
 
@@ -95,29 +97,70 @@ gulp.task('release', function(callback) {
     );
 });
 
-gulp.task('build-api', function() {
-    var parseOpts = {
-        project: {
-            name: pkg.name,
-            description: pkg.description,
-            version: pkg.version,
-            url: pkg.homepage
-        }
-    };
+gulp.task('build-api', function(cb) {
+    // var parseOpts = {
+    //     project: {
+    //         name: pkg.name,
+    //         description: pkg.description,
+    //         version: pkg.version,
+    //         url: pkg.homepage
+    //     }
+    // };
 
-    var renderOpts = {
-        themedir: path.join(rootDir, 'api-theme')
+    // var renderOpts = {
+    //     themedir: path.join(rootDir, 'api-theme')
+    // };
+
+    // gulp.src([
+    //     path.join(rootDir, 'src/core/**/*.js'),
+    //     path.join(rootDir, 'src/plugins/autolink.js'),
+    //     path.join(rootDir, 'src/plugins/drop-images.js'),
+    //     path.join(rootDir, 'src/plugins/placeholder.js'),
+    //     path.join(reactDir, 'src/**/*.js*')
+    // ])
+    // .pipe(yuidoc(parseOpts, renderOpts))
+    // .pipe(gulp.dest(apiFolder));
+
+    // gulp.src([
+    //     path.join(rootDir, 'src/core/**/*.js'),
+    //     path.join(rootDir, 'src/plugins/autolink.js'),
+    //     path.join(rootDir, 'src/plugins/drop-images.js'),
+    //     path.join(rootDir, 'src/plugins/placeholder.js'),
+    //     path.join(reactDir, 'src/ui/react/src/**/*.js*')
+    // ])
+    //   .pipe(jsdoc.parser())
+    //   .pipe(jsdoc.generator(apiFolderJsDoc))
+
+    var config = {
+      tags: {
+        allowUnknownTags: true
+      },
+      opts: {
+        destination: apiFolderJsDoc
+      },
+      plugins: [
+        "plugins/markdown"
+      ],
+      templates: {
+        cleverLinks: false,
+        monospaceLinks: false,
+        default: {
+          outputSourceFiles: true
+        },
+        path: "ink-docstrap",
+        theme: "cerulean",
+        navType: "vertical",
+        linenums: true,
+        dateFormat: "MMMM Do YYYY, h:mm:ss a"
+      }
     };
 
     gulp.src([
-        path.join(rootDir, 'src/core/**/*.js'),
-        path.join(rootDir, 'src/plugins/autolink.js'),
-        path.join(rootDir, 'src/plugins/drop-images.js'),
-        path.join(rootDir, 'src/plugins/placeholder.js'),
-        path.join(reactDir, 'src/**/*.js*')
-    ])
-    .pipe(yuidoc(parseOpts, renderOpts))
-    .pipe(gulp.dest(apiFolder));
+        path.join(rootDir, 'src/ui/react/src/adapter/*.js'),
+        path.join(rootDir, 'src/ui/react/src/oop/*.js'),
+        path.join(rootDir, 'src/ui/react/src/uibridge/*.js*'),
+    ], {read: false})
+        .pipe(jsdoc(config, cb));
 });
 
 gulp.task('build-demo', function() {
@@ -357,8 +400,8 @@ gulp.task('post-cleanup', function(callback) {
     });
 });
 
-gulp.task('watch', ['build'], function () {
-    gulp.watch('src/**/*', ['build']);
+gulp.task('watch', ['build-api'], function () {
+    gulp.watch('src/**/*', ['build-api']);
 });
 
 gulp.task('wrap-alloy-editor-core', function () {

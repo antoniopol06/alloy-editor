@@ -16,14 +16,14 @@
      * - editor.removeMenuItem(name)
      *
      * @class CKEDITOR.plugins.ae_menubridge
-     * @constructor
      */
     CKEDITOR.plugins.add('ae_menubridge', {
         /**
          * Set the add handler for UI_BUTTON to our own. We do this in the init phase to override
          * the one in the native plugin in case it's present.
          *
-         * @method init
+         * @memberof CKEDITOR.plugins.ae_menubridge
+         * @method beforeInit
          * @param {Object} editor The CKEditor instance being initialized
          */
         beforeInit: function (editor) {
@@ -44,7 +44,8 @@
              * Registers an item group to the editor context menu in order to make it
              * possible to associate it with menu items later.
              *
-             * @method addMenuGroup
+             * @memberof CKEDITOR.plugins.ae_menubridge
+             * @method editor.addMenuGroup
              * @param {String} name Specify a group name.
              * @param {Number} [order=100] Define the display sequence of this group
              * inside the menu. A smaller value gets displayed first.
