@@ -43,6 +43,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonCommandListItem
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -55,6 +56,7 @@
         /**
          * Returns the class name of Widget.
          *
+         * @memberof ButtonCommandListItem
          * @method _getClassName
          * @return {String} The class name of the Widget.
          */

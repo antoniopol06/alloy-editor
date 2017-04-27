@@ -47,6 +47,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonTableRemove
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -62,6 +63,7 @@
          * Removes the table in the editor element.
          *
          * @protected
+         * @memberof ButtonTableRemove
          * @method _removeTable
          */
         _removeTable: function() {

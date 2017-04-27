@@ -51,6 +51,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonRemoveFormat
          * @method getDefaultProps
          * @return {Object} The default properties.
          */
@@ -63,6 +64,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonRemoveFormat
          * @method render
          * @return {Object} The content which should be rendered.
          */

@@ -56,6 +56,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonStylesListItemRemove
          * @method getDefaultProps
          * @return {Object} The default properties.
          */
@@ -68,6 +69,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonStylesListItemRemove
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -83,6 +85,7 @@
          * Removes all inline styles and configured block elements applied to the current selection.
          *
          * @protected
+         * @memberof ButtonStylesListItemRemove
          * @method _removeStyles
          */
         _removeStyles: function() {

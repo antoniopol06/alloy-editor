@@ -28,6 +28,7 @@
      * already created based on the button name and definition.
      *
      * @private
+     * @memberof CKEDITOR.plugins.ae_buttonbridge
      * @method generateButtonBridge
      * @param {String} buttonName The button's name
      * @param {Object} buttonDefinition The button's definition

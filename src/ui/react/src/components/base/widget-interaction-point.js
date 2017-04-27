@@ -28,6 +28,7 @@
          * This may be the point where the user released the mouse, or just the beginning or the end of
          * the selection.
          *
+         * @memberof WidgetInteractionPoint
          * @method getInteractionPoint
          * @return {Object} An Object which contains the following properties:
          * direction, x, y, where x and y are in page coordinates and direction can be one of these:
@@ -96,6 +97,7 @@
          * Returns the position of the Widget.
          *
          * @protected
+         * @memberof WidgetInteractionPoint
          * @method _getXPoint
          * @param {Object} selectionData The data about the selection in the editor as
          * returned from {{#crossLink "CKEDITOR.plugins.ae_selectionregion/getSelectionData:method"}}{{/crossLink}}
@@ -131,6 +133,7 @@
          *
          * @method _getYPoint
          * @protected
+         * @memberof WidgetInteractionPoint
          * @param {Object} selectionData The data about the selection in the editor as
          * returned from {{#crossLink "CKEDITOR.plugins.ae_selectionregion/getSelectionData:method"}}{{/crossLink}}
          * @param {Object} nativeEvent The data about event is fired

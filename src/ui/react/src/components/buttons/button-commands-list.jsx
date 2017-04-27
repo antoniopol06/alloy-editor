@@ -53,6 +53,7 @@
          *
          * Focuses on the list node to allow keyboard interaction.
          *
+         * @memberof ButtonCommandsList
          * @method componentDidMount
          */
         componentDidMount: function () {
@@ -62,6 +63,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonCommandsList
          * @method getDefaultProps
          * @return {Object} The default properties.
          */
@@ -82,6 +84,7 @@
         /**
          * Lifecycle. Renders the UI of the list.
          *
+         * @memberof ButtonCommandsList
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -99,6 +102,7 @@
          * Renders instances of ButtonCommandListItem with the description of the row action that will be executed.
          *
          * @protected
+         * @memberof ButtonCommandsList
          * @method _renderActions
          * @return {Array} Rendered instances of ButtonCommandListItem class
          */

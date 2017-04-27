@@ -24,6 +24,7 @@
         /**
          * Lifecycle. Invoked once, both on the client and server, immediately before the initial rendering occurs.
          *
+         * @memberof ButtonKeystroke
          * @method componentWillMount
          */
         componentWillMount: function() {
@@ -59,6 +60,7 @@
         /**
          * Lifecycle. Invoked immediately before a component is unmounted from the DOM.
          *
+         * @memberof ButtonKeystroke
          * @method componentWillUnmount
          */
         componentWillUnmount: function() {

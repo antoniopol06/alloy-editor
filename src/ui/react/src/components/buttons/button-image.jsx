@@ -47,6 +47,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonImage
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -67,6 +68,7 @@
         /**
          * Simulates click on the input element. This will open browser's native file open dialog.
          *
+         * @memberof ButtonImage
          * @method handleClick
          * @param {SyntheticEvent} event The received click event on the button.
          */
@@ -84,6 +86,7 @@
          * - `file` - the original image file from the input element
          *
          * @protected
+         * @memberof ButtonImage
          * @method _onInputChange
          */
         _onInputChange: function() {

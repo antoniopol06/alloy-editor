@@ -29,6 +29,7 @@
          *
          * Focuses on the list node to allow keyboard interaction.
          *
+         * @memberof ButtonStylesList
          * @method componentDidMount
          */
         componentDidMount: function () {
@@ -38,6 +39,7 @@
         /**
          * Lifecycle. Invoked once, both on the client and server, immediately before the initial rendering occurs.
          *
+         * @memberof ButtonStylesList
          * @method componentWillMount
          */
         componentWillMount: function () {
@@ -65,6 +67,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonStylesList
          * @method getDefaultProps
          * @return {Object} The default properties.
          */
@@ -86,6 +89,7 @@
         /**
          * Lifecycle. Renders the UI of the list.
          *
+         * @memberof ButtonStylesList
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -116,6 +120,7 @@
          * Renders instances of ButtonStylesListItem with the preview of the correspondent block, inline or object styles.
          *
          * @protected
+         * @memberof ButtonStylesList
          * @method _renderStylesItems
          * @param {Array} styles List of styles for which preview should be rendered.
          * @return {Array} Rendered instances of ButtonStylesListItem class

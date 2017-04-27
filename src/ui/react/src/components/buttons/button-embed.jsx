@@ -55,6 +55,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonEmbed
          * @method getDefaultProps
          * @return {Object} The default properties.
          */
@@ -70,6 +71,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonEmbed
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -91,6 +93,7 @@
          * Requests the link button to be rendered in exclusive mode to allow the embedding of a link.
          *
          * @protected
+         * @memberof ButtonEmbed
          * @method _requestExclusive
          */
         _requestExclusive: function() {

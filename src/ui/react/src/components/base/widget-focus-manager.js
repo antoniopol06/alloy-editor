@@ -40,6 +40,7 @@
 
             /**
             * Indicate if should focus the first child of a container
+            *
             * @property {Boolean} focusFirstChild
             */
             focusFirstChild: React.PropTypes.bool,
@@ -64,6 +65,7 @@
         /**
          * Lifecycle. Invoked once, only on the client, immediately after the initial rendering occurs.
          *
+         * @memberof WidgetFocusManager
          * @method componentDidMount
          */
         componentDidMount: function() {
@@ -74,6 +76,7 @@
          * Lifecycle. Invoked immediately after the component's updates are flushed to the DOM.
          * Refreshes the descendants list.
          *
+         * @memberof WidgetFocusManager
          * @method componentDidUpdate
          */
         componentDidUpdate: function() {
@@ -86,6 +89,7 @@
          * Several Widgets can be nested in a component hierarchy by attaching this focus method to
          * the widget DOM node, transferring the DOM focus control to the inner FocusManager.
          *
+         * @memberof WidgetFocusManager
          * @method focus
          */
         focus: function(event) {
@@ -113,6 +117,7 @@
         /**
          * Handles the key events on a DOM node to execute the appropriate navigation when needed.
          *
+         * @memberof WidgetFocusManager
          * @param {Object} event The Keyboard event that was detected on the widget DOM node.
          * @method handleKey
          */
@@ -138,6 +143,7 @@
         /**
          * Moves the focus among descendants in the especified direction.
          *
+         * @memberof WidgetFocusManager
          * @method moveFocus
          * @param {number} direction The direction (1 or -1) of the focus movement among descendants.
          */
@@ -152,6 +158,7 @@
          * should produce.
          *
          * @protected
+         * @memberof WidgetFocusManager
          * @method _getFocusAction
          * @param {object} event The Keyboard event.
          * @return {Object} An action object with type and direction properties.
@@ -189,6 +196,7 @@
          *     - The active descendant is the last one and a next key has been pressed.
          *
          * @protected
+         * @memberof WidgetFocusManager
          * @method _getFocusDismissAction
          * @param {Object} event The Keyboard event.
          * @param {Number} focusMoveDirection The focus movement direction (if any).
@@ -229,6 +237,7 @@
          * shift key modifier, the direction of the movement is inverted.
          *
          * @protected
+         * @memberof WidgetFocusManager
          * @method _getFocusMoveDirection
          * @param {Object} event The Keyboard event.
          * @return {Number} The computed direction of the expected focus movement.
@@ -257,6 +266,7 @@
          * @param {Array|Number} keys A key set. Can be a number an array of numbers representing the allowed keyCodes.
          *
          * @protected
+         * @memberof WidgetFocusManager
          * @method _isValidKey
          * @return {Boolean} A boolean value indicating if the key is valid.
          */
@@ -269,6 +279,7 @@
          * input, select or textarea are excluded.
          *
          * @protected
+         * @memberof WidgetFocusManager
          * @method _isValidKey
          * @param {DOMNode} element A DOM element.
          * @return {Boolean} A boolean value indicating if the element is valid.
@@ -283,6 +294,7 @@
          * Moves the focus among descendants in the especified direction.
          *
          * @protected
+         * @memberof WidgetFocusManager
          * @method _moveFocus
          * @param {number} direction The direction (1 or -1) of the focus movement among descendants.
          */
@@ -313,6 +325,7 @@
          * Refreshes the descendants list by executing the CSS selector again and resets the descendants tabIndex.
          *
          * @protected
+         * @memberof WidgetFocusManager
          * @method _refresh
          */
         _refresh: function() {

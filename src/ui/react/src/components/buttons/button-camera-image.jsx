@@ -22,6 +22,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @method ButtonCameraImage
          * @method getDefaultProps
          */
         getDefaultProps: function () {
@@ -35,6 +36,7 @@
          *
          * Focuses the take photo button.
          *
+         * @method ButtonCameraImage
          * @method componentDidMount
          */
         componentDidMount: function () {
@@ -44,6 +46,7 @@
         /**
          * Lifecycle. Invoked immediately before a component is unmounted from the DOM.
          *
+         * @method ButtonCameraImage
          * @method componentWillUnmount
          */
         componentWillUnmount: function() {
@@ -62,6 +65,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @method ButtonCameraImage
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -88,6 +92,7 @@
         /**
          * Takes photo from the video stream and inserts in into editor's content.
          *
+         * @method ButtonCameraImage
          * @method takePhoto
          */
         takePhoto: function() {
@@ -125,6 +130,7 @@
          * Displays error message in case of video stream capturing failure.
          *
          * @protected
+         * @method ButtonCameraImage
          * @method _handleStreamError
          * @param {Event} error The fired event in case of error.
          */
@@ -136,6 +142,7 @@
          * Starts streaming video in the video element and sets width/height to the video
          * and canvas elements.
          *
+         * @method ButtonCameraImage
          * @method _handleStreamSuccess
          * @param {Object} stream The video stream
          */

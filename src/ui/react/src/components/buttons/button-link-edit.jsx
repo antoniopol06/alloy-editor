@@ -84,6 +84,7 @@
          * Focuses on the link input to immediately allow editing. This should only happen if the component
          * is rendered in exclusive mode to prevent aggressive focus stealing.
          *
+         * @memberof ButtonLinkEdit
          * @method componentDidMount
          */
         componentDidMount: function () {
@@ -98,6 +99,7 @@
          * Lifecycle. Invoked when a component is receiving new props.
          * This method is not called for the initial render.
          *
+         * @memberof ButtonLinkEdit
          * @method componentWillReceiveProps
          */
         componentWillReceiveProps: function(nextProps) {
@@ -107,6 +109,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonLinkEdit
          * @method getDefaultProps
          * @return {Object} The default properties.
          */
@@ -133,6 +136,7 @@
          * Lifecycle. Invoked once before the component is mounted.
          * The return value will be used as the initial value of this.state.
          *
+         * @memberof ButtonLinkEdit
          * @method getInitialState
          */
         getInitialState: function() {
@@ -155,6 +159,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonLinkEdit
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -240,6 +245,7 @@
          * are translated to the editor element.
          *
          * @protected
+         * @memberof ButtonLinkEdit
          * @method _clearLink
          */
         _clearLink: function() {
@@ -254,6 +260,7 @@
          * Focuses the user cursor on the widget's input.
          *
          * @protected
+         * @memberof ButtonLinkEdit
          * @method _focusLinkInput
          */
         _focusLinkInput: function() {
@@ -277,6 +284,7 @@
          * - Escape: Discards the changes.
          *
          * @protected
+         * @memberof ButtonLinkEdit
          * @method _handleKeyDown
          * @param {SyntheticEvent} event The keyboard event.
          */
@@ -304,6 +312,7 @@
          * Updates the component state when the link input changes on user interaction.
          *
          * @protected
+         * @memberof ButtonLinkEdit
          * @method _handleLinkHrefChange
          * @param {SyntheticEvent} event The change event.
          */
@@ -319,6 +328,7 @@
          * Updates the component state when the link target changes on user interaction.
          *
          * @protected
+         * @memberof ButtonLinkEdit
          * @method _handleLinkTargetChange
          * @param {SyntheticEvent} event The click event.
          */
@@ -335,6 +345,7 @@
          * Updates the component state when an autocomplete link result is selected by user interaction.
          *
          * @protected
+         * @memberof ButtonLinkEdit
          * @method _handleLinkAutocompleteClick
          * @param {SyntheticEvent} event The click event.
          */
@@ -353,6 +364,7 @@
          * from the original link.
          *
          * @protected
+         * @memberof ButtonLinkEdit
          * @method _isValidState
          * @return {Boolean} [description]
          */
@@ -370,6 +382,7 @@
          * Removes the link in the editor element.
          *
          * @protected
+         * @memberof ButtonLinkEdit
          * @method _removeLink
          */
         _removeLink: function() {
@@ -393,6 +406,7 @@
          * Update autocompleteSelected state to focus and select autocomplete´s dropdown
          *
          * @protected
+         * @memberof ButtonLinkEdit
          * @method _setAutocompleteState
          */
         _setAutocompleteState: function(state) {
@@ -406,6 +420,7 @@
          * create a new <a> element with the href specified in the link input.
          *
          * @protected
+         * @memberof ButtonLinkEdit
          * @method _updateLink
          */
         _updateLink: function() {

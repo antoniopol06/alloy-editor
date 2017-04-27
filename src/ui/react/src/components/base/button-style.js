@@ -28,6 +28,7 @@
         /**
          * Lifecycle. Invoked once, both on the client and server, immediately before the initial rendering occurs.
          *
+         * @memberof ButtonStyle
          * @method componentWillMount
          */
         componentWillMount: function() {
@@ -55,6 +56,7 @@
         /**
          * Lifecycle. Invoked immediately before a component is unmounted from the DOM.
          *
+         * @memberof ButtonStyle
          * @method componentWillUnmount
          */
         componentWillUnmount: function() {
@@ -64,6 +66,7 @@
         /**
          * Returns instance of CKEDITOR.style which represents the current button style.
          *
+         * @memeberof ButtonStyle
          * @method getStyle
          * @return {CKEDITOR.style} The current style representation.
          */
@@ -74,6 +77,7 @@
         /**
          * Checks if style is active in the current selection.
          *
+         * @memeberof ButtonStyle
          * @method isActive
          * @return {Boolean} True if style is active, false otherwise.
          */

@@ -68,6 +68,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonTableColumn
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -94,6 +95,7 @@
          * Returns a list of commands. If a list of commands was passed
          * as property `commands`, it will take a precedence over the default ones.
          *
+         * @memberof ButtonTableColumn
          * @method _getCommands
          * @return {Array} The list of available commands.
          */

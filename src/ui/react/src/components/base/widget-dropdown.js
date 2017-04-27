@@ -11,6 +11,7 @@
          * Lifecycle. Invoked when a component is receiving new props.
          * This method is not called for the initial render.
          *
+         * @WidgetDropdown
          * @method componentWillReceiveProps
          */
         componentWillReceiveProps: function(nextProps) {
@@ -23,6 +24,7 @@
         /**
          * Lifecycle. Invoked once before the component is mounted.
          *
+         * @WidgetDropdown
          * @method getInitialState
          */
         getInitialState: function() {
@@ -37,6 +39,7 @@
          * - expanded - boolean flag which indicates if an widget should be rendered exclusively.
          * - toggleDropdown - function, which can be used by an widget in order to obtain exclusive state.
          *
+         * @WidgetDropdown
          * @method mergeDropdownProps
          * @param {Object} obj The properties container which should be merged with the properties, related
          *    to dropdown state.
@@ -54,6 +57,7 @@
         /**
          * Sets the active dropdown of the widget or discards the toggled item from the state.
          *
+         * @WidgetDropdown
          * @method toggleDropdown
          * @param {Object} itemDropdown The widget which requests to toggle its dropdown.
          * @param {Number} toggleDirection User movement direction when toggled via keyboard.

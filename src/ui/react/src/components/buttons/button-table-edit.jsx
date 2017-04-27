@@ -44,6 +44,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonTableEdit
          * @method getDefaultProps
          */
         getDefaultProps: function () {
@@ -63,6 +64,7 @@
          *
          * Focuses on the link input to immediately allow editing.
          *
+         * @memberof ButtonTableEdit
          * @method componentDidMount
          */
         componentDidMount: function () {
@@ -72,6 +74,7 @@
         /**
          * Lifecycle. Invoked once before the component is mounted.
          *
+         * @memberof ButtonTableEdit
          * @method getInitialState
          */
         getInitialState: function() {
@@ -85,6 +88,7 @@
          * Creates a table.
          *
          * @protected
+         * @memberof ButtonTableEdit
          * @method _createTable
          */
         _createTable: function() {
@@ -106,6 +110,7 @@
          * Handles a change in input value. Sets the provided value from the user back to the input.
          *
          * @protected
+         * @memberof ButtonTableEdit
          * @method _handleChange
          * @param {String} inputName The name of the input which value should be updated.
          * @param {SyntheticEvent} event The provided event.
@@ -123,6 +128,7 @@
          * - Escape: Discards the changes.
          *
          * @protected
+         * @memberof ButtonTableEdit
          * @method _handleKeyDown
          * @param {SyntheticEvent} event The keyboard event.
          */
@@ -141,6 +147,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonTableEdit
          * @method render
          * @return {Object} The content which should be rendered.
          */

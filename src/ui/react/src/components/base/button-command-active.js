@@ -11,6 +11,7 @@
         /**
          * Checks if the command is active in the current selection.
          *
+         * @memberof ButtonCommandActive
          * @method isActive
          * @return {Boolean} True if the command is active, false otherwise.
          */

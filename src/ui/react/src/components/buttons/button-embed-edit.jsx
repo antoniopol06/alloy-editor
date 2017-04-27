@@ -39,6 +39,7 @@
          * Focuses on the link input to immediately allow editing. This should only happen if the component
          * is rendered in exclusive mode to prevent aggressive focus stealing.
          *
+         * @memberof ButtonEmbedEdit
          * @method componentDidMount
          */
         componentDidMount: function () {
@@ -57,6 +58,7 @@
          * Lifecycle. Invoked when a component is receiving new props.
          * This method is not called for the initial render.
          *
+         * @memberof ButtonEmbedEdit
          * @method componentWillReceiveProps
          */
         componentWillReceiveProps: function(nextProps) {
@@ -67,6 +69,7 @@
          * Lifecycle. Invoked once before the component is mounted.
          * The return value will be used as the initial value of this.state.
          *
+         * @memberof ButtonEmbedEdit
          * @method getInitialState
          */
         getInitialState: function() {
@@ -97,6 +100,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonEmbedEdit
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -127,6 +131,7 @@
          * are translated to the editor element.
          *
          * @protected
+         * @memberof ButtonEmbedEdit
          * @method _clearLink
          */
         _clearLink: function() {
@@ -139,6 +144,7 @@
          * Triggers the embedUrl command to transform the link into an embed media object
          *
          * @protected
+         * @memberof ButtonEmbedEdit
          * @method _embedLink
          */
         _embedLink: function() {
@@ -157,6 +163,7 @@
          * Focuses the user cursor on the widget's input.
          *
          * @protected
+         * @memberof ButtonEmbedEdit
          * @method _focusLinkInput
          */
         _focusLinkInput: function() {
@@ -169,6 +176,7 @@
          * - Escape: Discards the changes.
          *
          * @protected
+         * @memberof ButtonEmbedEdit
          * @method _handleKeyDown
          * @param {SyntheticEvent} event The keyboard event.
          */
@@ -194,6 +202,7 @@
          * Updates the component state when the link input changes on user interaction.
          *
          * @protected
+         * @memberof ButtonEmbedEdit
          * @method _handleLinkHrefChange
          * @param {SyntheticEvent} event The change event.
          */
@@ -209,6 +218,7 @@
          *
          * @method _isValidState
          * @protected
+         * @memberof ButtonEmbedEdit
          * @return {Boolean} True if the state is valid, false otherwise
          */
         _isValidState: function() {
@@ -224,6 +234,7 @@
          * Removes the embed in the editor element.
          *
          * @protected
+         * @memberof ButtonEmbedEdit
          * @method _removeEmbed
          */
         _removeEmbed: function() {

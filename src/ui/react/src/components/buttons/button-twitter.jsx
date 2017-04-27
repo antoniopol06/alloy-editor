@@ -52,6 +52,7 @@
         /**
          * Creates or removes the twitter link on the selection.
          *
+         * @memberof ButtonTwitter
          * @method handleClick
          */
         handleClick: function() {
@@ -77,6 +78,7 @@
         /**
          * Checks if the current selection is contained within a link that points to twitter.com/intent/tweet.
          *
+         * @memberof ButtonTwitter
          * @method isActive
          * @return {Boolean} True if the selection is inside a twitter link, false otherwise.
          */
@@ -89,6 +91,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonTwitter
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -107,6 +110,7 @@
          * options received via props.
          *
          * @protected
+         * @memberof ButtonTwitter
          * @method _getHref
          * @return {String} A valid twitter url with the selected text and given configuration.
          */

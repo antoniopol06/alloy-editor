@@ -22,6 +22,7 @@
          * Merges the properties, passed to the current component with user's configuration
          * via `buttonCfg` property.
          *
+         * @memberof ButtonCfgProps
          * @method mergeButtonCfgProps
          * @param {Object} props The properties to be merged with the provided configuration for this
          * button. If not passed, the user configuration will be merged with `this.props`

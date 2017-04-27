@@ -37,6 +37,7 @@
         /**
          * Lifecycle. Invoked once, only on the client, immediately after the initial rendering occurs.
          *
+         * @memberof ButtonTargetList
          * @method componentDidMount
          */
         componentDidMount: function() {
@@ -46,6 +47,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonTargetList
          * @method getDefaultProps
          */
         getDefaultProps: function() {
@@ -65,6 +67,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonTargetList
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -82,6 +85,7 @@
          * Returns the the allowed link target items.
          *
          * @protected
+         * @memberof ButtonTargetList
          * @method _getAllowedTargetItems
          *
          * @return {Array} The allowed target items.
@@ -109,6 +113,7 @@
         /**
          * Renders the allowed link target items.
          *
+         * @memberof ButtonTargetList
          * @method _renderListTargets
          * @return {Object} Returns the rendered link items
          */

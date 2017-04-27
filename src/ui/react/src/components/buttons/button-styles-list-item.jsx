@@ -28,6 +28,7 @@
         /**
          * Lifecycle. Invoked once, both on the client and server, immediately before the initial rendering occurs.
          *
+         * @memberof ButtonStylesListItem
          * @method componentWillMount
          */
         componentWillMount: function () {
@@ -48,6 +49,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonStylesListItem
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -65,6 +67,7 @@
          * Applies the item style to the editor selection.
          *
          * @protected
+         * @memberof ButtonStylesListItem
          * @method _onClick
          */
         _onClick: function() {

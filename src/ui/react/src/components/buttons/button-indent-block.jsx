@@ -54,6 +54,7 @@
      	/**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonIndentBlock
          * @method getDefaultProps
          * @return {Object} The default properties.
          */
@@ -66,6 +67,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonIndentBlock
          * @method render
          * @return {Object} The content which should be rendered.
          */

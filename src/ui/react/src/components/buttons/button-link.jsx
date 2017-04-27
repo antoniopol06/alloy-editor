@@ -57,6 +57,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonLink
          * @method getDefaultProps
          * @return {Object} The default properties.
          */
@@ -72,6 +73,7 @@
         /**
          * Checks if the current selection is contained within a link.
          *
+         * @memberof ButtonLink
          * @method isActive
          * @return {Boolean} True if the selection is inside a link, false otherwise.
          */
@@ -82,6 +84,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonLink
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -107,6 +110,7 @@
          * Requests the link button to be rendered in exclusive mode to allow the creation of a link.
          *
          * @protected
+         * @memberof ButtonLink
          * @method _requestExclusive
          */
         _requestExclusive: function() {

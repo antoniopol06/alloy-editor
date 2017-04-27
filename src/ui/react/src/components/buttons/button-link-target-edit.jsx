@@ -48,6 +48,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonLinkTargetEdit
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -78,6 +79,7 @@
          * Lifecycle. Invoked before rendering when new props or state are being received.
          * This method is not called for the initial render or when forceUpdate is used.
          *
+         * @memberof ButtonLinkTargetEdit
          * @method  shouldComponentUpdate
          * @return {Boolean} Returns false when the transition to the new props and state will not
          * require a component update.

@@ -53,6 +53,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonSubscript
          * @method getDefaultProps
          * @return {Object} The default properties.
          */
@@ -66,6 +67,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonSubscript
          * @method render
          * @return {Object} The content which should be rendered.
          */

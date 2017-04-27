@@ -50,6 +50,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonCamera
          * @method render
          * @return {Object} The content which should be rendered.
          */

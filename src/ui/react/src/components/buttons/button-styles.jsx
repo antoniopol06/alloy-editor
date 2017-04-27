@@ -77,6 +77,7 @@
         /**
          * Lifecycle. Renders the UI of the button.
          *
+         * @memberof ButtonStyles
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -114,6 +115,7 @@
          * Checks if the given style definition is applied to the current selection in the editor.
          *
          * @protected
+         * @memberof ButtonStyles
          * @method _checkActive
          * @param {Object} styleConfig Style definition as per http://docs.ckeditor.com/#!/api/CKEDITOR.style.
          * @return {Boolean} Returns true if the style is applied to the selection, false otherwise.
@@ -138,6 +140,7 @@
          *
          * @method _getStyles
          * @protected
+         * @memberof ButtonStyles
          * @return {Array<object>} An array of objects containing the styles.
          */
         _getStyles: function() {

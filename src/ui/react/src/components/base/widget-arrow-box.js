@@ -12,6 +12,7 @@
          * Returns the list of arrow box classes associated to the current element's state. It relies
          * on the getInteractionPoint method to calculate the selection direction.
          *
+         * @memberof WidgetArrowBox
          * @method getArrowBoxClasses
          * @return {String} A string with the arrow box CSS classes.
          */

@@ -60,6 +60,7 @@
          * Lifecycle. Invoked when a component is receiving new props.
          * This method is not called for the initial render.
          *
+         * @memberof ButtonLinkAutocompleteList
          * @method componentWillReceiveProps
          */
         componentWillReceiveProps: function(nextProps) {
@@ -86,6 +87,7 @@
         /**
          * Lifecycle. Invoked immediately before a component is unmounted from the DOM.
          *
+         * @memberof ButtonLinkAutocompleteList
          * @method componentWillUnmount
          */
         componentWillUnmount: function() {
@@ -95,6 +97,7 @@
         /**
          * Lifecycle. Returns the default values of the properties used in the widget.
          *
+         * @memberof ButtonLinkAutocompleteList
          * @method getDefaultProps
          * @return {Object} The default properties.
          */
@@ -118,6 +121,7 @@
          * Lifecycle. Invoked once before the component is mounted.
          * The return value will be used as the initial value of this.state.
          *
+         * @memberof ButtonLinkAutocompleteList
          * @method getInitialState
          */
         getInitialState: function() {
@@ -129,6 +133,7 @@
         /**
          * Lifecycle. Renders the UI of the list.
          *
+         * @memberof ButtonLinkAutocompleteList
          * @method render
          * @return {Object} The content which should be rendered.
          */
@@ -148,6 +153,7 @@
          * Lifecycle. Invoked before rendering when new props or state are being received.
          * This method is not called for the initial render or when forceUpdate is used.
          *
+         * @memberof ButtonLinkAutocompleteList
          * @method  shouldComponentUpdate
          * @return {Boolean} Returns false when the transition to the new props and state will not
          * require a component update.
@@ -160,6 +166,7 @@
          * Renders a set of list items for the provided items
          *
          * @protected
+         * @memberof ButtonLinkAutocompleteList
          * @method _renderAutocompleteItems
          * @param {Array} items List of autocomplete items to render
          * @return {Array} Rendered list item instances
@@ -184,6 +191,7 @@
          * Retrieves the data according to {this.props.term} and calls setState() with the returned data
          *
          * @protected
+         * @memberof ButtonLinkAutocompleteList
          * @method _updateItems
          */
         _updateItems: function() {
