@@ -9,11 +9,12 @@
     /**
      * CKEditor plugin that bridges the support offered by CKEditor Menu plugin. It takes over the
      * responsibility of adding, removing and retrieving menu groups and items
-     * - editor.addMenuGroup(name, order)
-     * - editor.addMenuItem(name, definition)
-     * - editor.addMenuItems(definitions)
-     * - editor.getMenuItem(name)
-     * - editor.removeMenuItem(name)
+     * <ul style="list-style: none;">
+     *  <li> editor.addMenuGroup(name, order) </li>
+     *  <li> editor.addMenuItem(name, definition) </li>
+     *  <li> editor.addMenuItems(definitions) </li>
+     *  <li> editor.removeMenuItem(name) </li>
+     * </ul>
      *
      * @class CKEDITOR.plugins.ae_menubridge
      */
@@ -44,7 +45,7 @@
              * Registers an item group to the editor context menu in order to make it
              * possible to associate it with menu items later.
              *
-             * @memberof CKEDITOR.plugins.ae_menubridge
+             * @private
              * @method editor.addMenuGroup
              * @param {String} name Specify a group name.
              * @param {Number} [order=100] Define the display sequence of this group
@@ -57,6 +58,7 @@
             /**
              * Adds an item from the specified definition to the editor context menu.
              *
+             * @private
              * @method addMenuItem
              * @param {String} name The menu item name.
              * @param {Object} definition The menu item definition.
@@ -73,6 +75,7 @@
             /**
              * Adds one or more items from the specified definition object to the editor context menu.
              *
+             * @private
              * @method addMenuItems
              * @param {Object} definitions Object where keys are used as itemName and corresponding values as definition for a {@link #addMenuItem} call.
              */
@@ -85,6 +88,7 @@
             /**
              * Retrieves a particular menu item definition from the editor context menu.
              *
+             * @private
              * @method getMenuItem
              * @param {String} name The name of the desired menu item.
              * @return {Object}
@@ -96,6 +100,7 @@
             /**
              * Removes a particular menu item added before from the editor context menu.
              *
+             * @private
              * @method  removeMenuItem
              * @param {String} name The name of the desired menu item.
              */
